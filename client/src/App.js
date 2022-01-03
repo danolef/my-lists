@@ -5,6 +5,7 @@ import SignupForm from './SignupForm';
 import { useState } from 'react'
 
 function App() {
+
   const [loginAnchorEl, setLoginAnchorEl] = useState(null);
   const [signupAnchorEl, setSignupAnchorEl] = useState(null);
 
@@ -25,6 +26,9 @@ const handleLoginClose = () => {
 const handleSignupClose = () => {
   setSignupAnchorEl(null);
 };
+
+
+
   return (
     <div className="App">
       <h1>My Lists</h1>
