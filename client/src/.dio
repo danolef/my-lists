@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="Fsi2fJBE5miPn-rYmITw" name="Page-1">
-        <mxGraphModel dx="796" dy="312" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="796" dy="393" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -43,11 +43,23 @@
                 <mxCell id="17" value="has_many items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="14">
                     <mxGeometry y="78" width="140" height="26" as="geometry"/>
                 </mxCell>
+                <mxCell id="YRzL0nCRjbniRpaudXS0-17" value="Password&amp;nbsp;&lt;br&gt;username&lt;br&gt;email&lt;br&gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="224" width="170" height="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="YRzL0nCRjbniRpaudXS0-18" value="user id&lt;br&gt;name" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="240" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="YRzL0nCRjbniRpaudXS0-19" value="list id&amp;nbsp;&lt;br&gt;items id&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="240" width="150" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="YRzL0nCRjbniRpaudXS0-20" value="Name&lt;br&gt;ImageUrl&lt;br&gt;SiteUrl&lt;br&gt;price optional" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="580" y="240" width="170" height="70" as="geometry"/>
+                </mxCell>
             </root>
         </mxGraphModel>
     </diagram>
     <diagram id="TrguebDUH7NVw_jFjP2s" name="Page-2">
-        <mxGraphModel dx="796" dy="530" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="796" dy="393" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="2ie40moZ9oXmq20gzDMb-0"/>
                 <mxCell id="2ie40moZ9oXmq20gzDMb-1" parent="2ie40moZ9oXmq20gzDMb-0"/>
