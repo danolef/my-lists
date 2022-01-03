@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :list_items
   resources :items
-  resources :lists
+  resources :lists, only: [:index, :create]
   resources :users
   
   get '/signup', to: "users#create"

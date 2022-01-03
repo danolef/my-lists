@@ -1,4 +1,4 @@
 class ListSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :name
   has_one :user
 end
