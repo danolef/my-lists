@@ -22,12 +22,6 @@ l5 = List.create({name: 'SportsWear', user_id: u1.id})
 
 lists = [l1, l2, l3, l4, l5]
 
-puts "🌱 Seeding listItems..."
-li1 = ListItem.create({list_id: l1.id})
-li2 = ListItem.create({list_id: l2.id})
-li3 = ListItem.create({list_id: l3.id})
-li4 = ListItem.create({list_id: l4.id})
-li5 = ListItem.create({list_id: l5.id})
 
 puts "🌱 Seeding items..."
 
@@ -41,5 +35,17 @@ i7 = Item.create({name: 'Relaxed Fit Corduroy Overshirt', image_url: 'https://lp
 i8 = Item.create({name: 'Relaxed Viscone Shirt with deep revere in stone', image_url: 'https://images.asos-media.com/products/asos-design-relaxed-viscose-shirt-with-deep-revere-in-stone/201186180-3?$n_640w$&wid=513&fit=constrain', site_url: 'https://www.asos.com/us/asos-design/asos-design-relaxed-viscose-shirt-with-deep-revere-in-stone/prd/201186180?clr=stone&colourWayId=201186181&cid=3602', price: 32.00})
 i9 = Item.create({name: "Nike Air Force 1 '07'", image_url: 'https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/4f37fca8-6bce-43e7-ad07-f57ae3c13142/air-force-1-07-mens-shoes-5QFp5Z.png', site_url: 'https://www.nike.com/t/air-force-1-07-mens-shoes-5QFp5Z/CW2288-111', price: 100.00})
 i10 = Item.create({name: 'NMD_R1 PRIMEBLUE SHOES', image_url: 'https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/c3bd9dda9fdd4a7cbc9aad1e00dd0045_9366/NMD_R1_Primeblue_Shoes_White_GZ9260_01_standard.jpg', site_url: 'https://www.adidas.com/us/nmd_r1-primeblue-shoes/GZ9260.html', price: 150.00})
+
+puts "🌱 Seeding listItems..."
+li1 = ListItem.create({list_id: l1.id, item_id: i5.id})
+li2 = ListItem.create({list_id: l2.id, item_id: i7.id})
+li3 = ListItem.create({list_id: l3.id, item_id: i3.id})
+li4 = ListItem.create({list_id: l4.id, item_id: i1.id})
+li5 = ListItem.create({list_id: l5.id, item_id: i9.id})
+li6 = ListItem.create({list_id: l1.id, item_id: i6.id})
+li7 = ListItem.create({list_id: l2.id, item_id: i8.id})
+li8 = ListItem.create({list_id: l3.id, item_id: i4.id})
+li9 = ListItem.create({list_id: l4.id, item_id: i2.id})
+li10 = ListItem.create({list_id: l5.id, item_id: i10.id})
 
 puts "✅ Done seeding!"
