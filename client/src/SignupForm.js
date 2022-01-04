@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Popover from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 
 export default function SignupForm({signupAnchorEl, handleSignupClose}){
@@ -93,6 +94,10 @@ export default function SignupForm({signupAnchorEl, handleSignupClose}){
           defaultValue=""
           helperText="Passwords do not match"
         />
+        <Button
+        type="submit"
+        variant='outlined'
+        > Login </Button>
         </form>
         </Box>
       </Popover>
