@@ -59,7 +59,7 @@ export default function newListFrom {
             onChange={handleNewListChange}
             required
             type="text"
-            name="NewList"
+            name="newList"
             id="outlined-required"
             label="Required"
             defaultValue="Hello World"
