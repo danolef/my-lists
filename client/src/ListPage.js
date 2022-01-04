@@ -1,10 +1,24 @@
-export default function ListPage(){
+import { useState } from 'react'
+import Button from '@mui/material/Button';
 
-    /*const listItemsArr = data.map(itemData => <ListItem our props here />*/ 
+export default function ListPage(){
+    const [newItemAnchorEl, setNewItemAnchorEl] = useState(null);
+
+    const handleNewItemClose = () => {
+        setNewItemAnchorEl(null);
+      };
+
+      function handleNewItemFormClick(event){
+        setNewItemAnchorEl(event.currentTarget)
+        console.log('hey im the new item button')
+      }
+
+    /*const listItemsArr = data.map(itemData => <ListItem newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose} our props here />*/ 
     return(
         <div>
             <h1>Hats</h1>
             {/*{listItemsArr}*/} 
+            <Button onClick={handleNewItemFormClick}> Add New Item </Button>
         </div>
     )
 }
