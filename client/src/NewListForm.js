@@ -64,10 +64,14 @@ export default function newListFrom {
             label="Required"
             defaultValue="Hello World"
             />
-            
+            <Button 
+            Type="submit"
+            variant="outlined">
+                Add List
+            </Button> 
         </form>
         </Box>
       </Popover>
-        </div>
+    </div>
     )
 }
