@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Popover from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 
 export default function LoginForm({loginAnchorEl, handleLoginClose}){
@@ -69,6 +70,10 @@ export default function LoginForm({loginAnchorEl, handleLoginClose}){
           defaultValue=""
           helperText="Invalid Password. Password was incorrect"
         />
+         <Button
+        type="submit"
+        variant='outlined'
+        > Login </Button>
         </form>
         </Box>
       </Popover>
