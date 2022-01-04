@@ -6,8 +6,14 @@ def index
 end
 
 def create
-    item= current_user.list.create!(list_params)
-    render json: item, status: :created
+    list= current_user.list.create!(list_params)
+    render json: list, status: :created
+end
+
+def destroy
+    list= List.find_by(id: params[:id])
+    list.destroy
+    head :no_content
 end
 
 private
@@ -15,4 +21,5 @@ private
 def list_params
     params.permit(:name)
 end
+
 end
