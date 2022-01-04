@@ -2,8 +2,8 @@ import './App.css';
 import LoginSignupPage from './LoginSignupPage';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import MenuHeader from './MenuHeader';
 import { useState } from 'react'
+import ItemPage from './ItemPage';
 
 function App() {
 
@@ -32,11 +32,11 @@ const handleSignupClose = () => {
 
   return (
     <div className="App">
+      <ItemPage/>
       <h1>My Lists</h1>
       <LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  />
       <LoginForm loginAnchorEl={loginAnchorEl} handleLoginClose={handleLoginClose}/>
       <SignupForm signupAnchorEl={signupAnchorEl} handleSignupClose={handleSignupClose}/>
-      <MenuHeader/>
     </div>
   );
 }
