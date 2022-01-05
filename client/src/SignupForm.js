@@ -63,6 +63,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
         }}
       >
  <Box
+      onSubmit={handleSignupSubmit}
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -70,7 +71,6 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
       noValidate
       autoComplete="off"
     >
-        <form onSubmit={handleSignupSubmit}>
         <TextField
           onChange={handleSignupChange}
           error
@@ -108,7 +108,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
           onChange={handleSignupChange}
           error
           type="text" 
-          name="passwordConfirm"
+          name="password_confirmation"
           value={signupData.passwordConfirm}
           id="outlined-error-helper-text"
           label="Confirm Password"
@@ -119,7 +119,6 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
         type="submit"
         variant='outlined'
         > Login </Button>
-        </form>
         </Box>
       </Popover>
         </div>
