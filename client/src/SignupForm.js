@@ -79,7 +79,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
           value={signupData.username}
           id="outlined-error-helper-text"
           label="Username"
-          defaultValue=""
+          // defaultValue=""
           helperText="Invalid Username. Must be at least 4 characters long, and only use letters and numbers"
         />
         <TextField
@@ -90,7 +90,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
           value={signupData.email}
           id="outlined-error-helper-text"
           label="Email"
-          defaultValue=""
+          // defaultValue=""
           helperText="Invalid Email. Email does not exist"
         />
          <TextField
@@ -101,7 +101,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
           value={signupData.password}
           id="outlined-error-helper-text"
           label="Password"
-          defaultValue=""
+          // defaultValue=""
           helperText="Invalid Password. Password was incorrect"
         />
         <TextField
@@ -112,7 +112,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
           value={signupData.passwordConfirm}
           id="outlined-error-helper-text"
           label="Confirm Password"
-          defaultValue=""
+          // defaultValue=""
           helperText="Passwords do not match"
         />
         <Button

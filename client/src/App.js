@@ -15,6 +15,8 @@ function App() {
   const [signupAnchorEl, setSignupAnchorEl] = useState(null);
   const [user, setUser] = useState(null);
 
+  console.log(user)
+
   useEffect(() => {
     fetch("/me")
     .then((res) => {
@@ -51,7 +53,7 @@ const handleSignupClose = () => {
       <LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  />
       <LoginForm loginAnchorEl={loginAnchorEl} handleLoginClose={handleLoginClose} setUser={setUser}/>
       <SignupForm signupAnchorEl={signupAnchorEl} handleSignupClose={handleSignupClose} setUser= {setUser}/>
-      <MenuHeader setUser= {setUser}/>
+      <MenuHeader setUser= {setUser} user= {user}/>
       </div>
   );
 }
