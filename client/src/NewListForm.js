@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 export default function NewListForm() {
 
     const [newListData, setNewListData] = useState ({
-        newList: ''
+        name: ''
     })
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -36,7 +36,7 @@ export default function NewListForm() {
           .then((r) => r.json())
           .then((newList) => setNewListData(newList));
       }
-    }
+    
 
     function handleNewListChange(e){
         setNewListData({...newListData, [e.target.name]:e.target.value})
@@ -58,6 +58,7 @@ export default function NewListForm() {
         }}
       >
         <Box
+            onSubmit={handleNewListSubmit}
             component="form"
             sx={{
                 '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -65,22 +66,20 @@ export default function NewListForm() {
             noValidate
             autoComplete="off"
         >
-        <form onSubmit={handleNewListSubmit}>
             <TextField
             onChange={handleNewListChange}
             required
             type="text"
-            name="newList"
+            name="name"
             id="outlined-required"
             label="Required"
-            defaultValue="Hello World"
+            // defaultValue="Hello World"
             />
             <Button 
-            Type="submit"
+            type="submit"
             variant="outlined">
                 Add List
             </Button> 
-        </form>
         </Box>
       </Popover>
     </div>

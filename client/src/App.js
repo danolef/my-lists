@@ -6,6 +6,7 @@ import RotatingList from './RotatingList';
 import HomePage from './HomePage'
 import MenuHeader from './MenuHeader'
 import ListPage from './ListPage'
+import NewListForm from './NewListForm'
 import { useState, useEffect } from 'react'
 
 
@@ -57,6 +58,7 @@ const handleSignupClose = () => {
       <SignupForm signupAnchorEl={signupAnchorEl} handleSignupClose={handleSignupClose} setUser= {setUser}/>
       <MenuHeader setUser= {setUser}/>
       <ListPage/>
+      <NewListForm/>
       </div>
   );
 }
