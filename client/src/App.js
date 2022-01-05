@@ -3,6 +3,7 @@ import LoginSignupPage from './LoginSignupPage';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import { useState } from 'react'
+import RotatingList from './RotatingList';
 
 function App() {
 
@@ -35,6 +36,7 @@ const handleSignupClose = () => {
       <LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  />
       <LoginForm loginAnchorEl={loginAnchorEl} handleLoginClose={handleLoginClose}/>
       <SignupForm signupAnchorEl={signupAnchorEl} handleSignupClose={handleSignupClose}/>
+      
     </div>
   );
 }
