@@ -201,7 +201,7 @@ export default function MenuHeader({setUser, user}) {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            Good Morning, Bubba
+            {`Welcome ${user.username}`}
           </Typography>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
