@@ -24,6 +24,8 @@ import userProfile from './assets/userProfile.jpg'
 import Stack from '@mui/material/Stack';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import ErrorIcon from '@mui/icons-material/Error';
+import Button from '@mui/material/Button';
+import { useState, useEffect } from 'react'
 
 const drawerWidth = 240;
 
@@ -99,6 +101,7 @@ export default function MenuHeader({setUser, user}) {
     const [open, setOpen] = React.useState(false);
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [listArr, setListArr] = useState([])
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -133,6 +136,25 @@ export default function MenuHeader({setUser, user}) {
       })
     }
     
+    useEffect(()=> {
+      fetch("/lists")
+      .then((res) => res.json())
+      .then((lists) => setListArr(lists))
+    }, [])
+
+    console.log(listArr)
+
+    function handleDelete(id) {
+      // console.log(id)
+      fetch(`/lists/${id}`, {
+        method: "DELETE"
+      })
+      .then(res => res.json())
+      .then(data => {
+        setListArr(listArr.filter(p => p.id !== id))
+      })
+    }
+
     return (
       <Box sx={{display: 'flex' }}>
         <CssBaseline />
@@ -243,12 +265,13 @@ export default function MenuHeader({setUser, user}) {
           </DrawerHeader>
           <Divider />
           <List>
-            {['Hats', 'Shirts', 'Car Manuals', 'Game Manuals', 'SportsWear'].map((text, index) => (
-              <ListItem button key={text}>
+            {listArr.map((list, index) => (
+              <ListItem button key={list.name}>
                 <ListItemIcon>
                   {index ? <ListAltIcon /> : <ListAltIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={list.name} />
+                <Button onClick={() => handleDelete(list.id)} size="small">X</Button>
               </ListItem>
             ))}
           </List>
