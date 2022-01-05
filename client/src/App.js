@@ -2,8 +2,10 @@ import './App.css';
 import LoginSignupPage from './LoginSignupPage';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import RotatingList from './RotatingList';
 import HomePage from './HomePage'
 import { useState, useEffect } from 'react'
+
 
 
 function App() {
