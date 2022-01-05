@@ -26,7 +26,7 @@ export default function NewListForm() {
     function handleNewListSubmit(e){
         e.preventDefault();
         
-        fetch("/", {
+        fetch("/lists", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -21,7 +21,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
     function handleNewItemSubmit(e){
         e.preventDefault();
         console.log(e.target.value)
-      fetch("/", {
+      fetch("/items", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,17 +84,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
           defaultValue=""
           helperText="You must enter the items URL"
         />
-        <TextField
-          onChange={handleNewItemChange}
-          error
-          type="text" 
-          name="image_url"
-          value={newItemData.image_url}
-          id="outlined-error-helper-text"
-          label="Image URL"
-          defaultValue=""
-          helperText="You must enter the items image URL"
-        />
+
         <TextField
           onChange={handleNewItemChange}
           error
