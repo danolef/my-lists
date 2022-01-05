@@ -4,13 +4,12 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-export default function newListFrom {
+export default function NewListFrom() {
 
     const [newListData, setNewListData] = useState ({
         newList: ''
     })
-
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);

@@ -2,6 +2,7 @@ import './App.css';
 import LoginSignupPage from './LoginSignupPage';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import MenuHeader from './MenuHeader';
 import { useState } from 'react'
 
 
@@ -36,6 +37,7 @@ const handleSignupClose = () => {
       <LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  />
       <LoginForm loginAnchorEl={loginAnchorEl} handleLoginClose={handleLoginClose}/>
       <SignupForm signupAnchorEl={signupAnchorEl} handleSignupClose={handleSignupClose}/>
+      <MenuHeader/>
     </div>
   );
 }

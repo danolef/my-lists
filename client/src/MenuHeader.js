@@ -92,7 +92,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Logout'];
 
 export default function MenuHeader() {
     const theme = useTheme();
@@ -123,6 +123,10 @@ export default function MenuHeader() {
       setOpen(false);
     };
   
+    function handleLogout(){
+      console.log('im the logout button')
+    }
+    
     return (
       <Box sx={{display: 'flex' }}>
         <CssBaseline />
@@ -217,7 +221,7 @@ export default function MenuHeader() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography onClick={handleLogout} textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
