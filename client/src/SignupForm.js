@@ -12,11 +12,12 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
         username: '',
         email: '',
         password: '',
-        passwordConfirm: ''
+        password_confirmation: ''
     })
   
     function handleSignupSubmit(e){
         e.preventDefault();
+        console.log(e)
         fetch("/signup", {
           method: "POST",
           headers: {

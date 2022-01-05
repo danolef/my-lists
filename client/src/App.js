@@ -45,14 +45,9 @@ const handleSignupClose = () => {
   return (
     <div className="App">
       <h1>My Lists</h1>
-      {user ? (
-      <>
       <LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  />
       <LoginForm loginAnchorEl={loginAnchorEl} handleLoginClose={handleLoginClose} setUser={setUser}/>
       <SignupForm signupAnchorEl={signupAnchorEl} handleSignupClose={handleSignupClose} setUser= {setUser}/>
-      </>) : (
-        <HomePage />
-      )}
       </div>
   );
 }
