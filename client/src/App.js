@@ -4,6 +4,8 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import RotatingList from './RotatingList';
 import HomePage from './HomePage'
+import MenuHeader from './MenuHeader'
+import ListPage from './ListPage'
 import { useState, useEffect } from 'react'
 
 
@@ -14,6 +16,7 @@ function App() {
   const [signupAnchorEl, setSignupAnchorEl] = useState(null);
   const [user, setUser] = useState(null);
 
+  
   useEffect(() => {
     fetch("/me")
     .then((res) => {
@@ -24,6 +27,8 @@ function App() {
     })
   }, [])
 
+  console.log(user)
+  
   function handleLoginClick(event){
     setLoginAnchorEl(event.currentTarget)
     console.log('Login')
@@ -50,6 +55,8 @@ const handleSignupClose = () => {
       <LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  />
       <LoginForm loginAnchorEl={loginAnchorEl} handleLoginClose={handleLoginClose} setUser={setUser}/>
       <SignupForm signupAnchorEl={signupAnchorEl} handleSignupClose={handleSignupClose} setUser= {setUser}/>
+      <MenuHeader setUser= {setUser}/>
+      <ListPage/>
       </div>
   );
 }

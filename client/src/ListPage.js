@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 
 export default function ListPage(){
     const [newItemAnchorEl, setNewItemAnchorEl] = useState(null);
+    const [listCards, setListCards] = useState([])
 
     const handleNewItemClose = () => {
         setNewItemAnchorEl(null);

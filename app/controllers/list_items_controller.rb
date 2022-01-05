@@ -1,9 +1,9 @@
 class ListItemsController < ApplicationController
 
     def index
-        render json: Item.all
+        render json: ListItem.all
     end
-
+    
     def show
         list= List.find_by(params[:id])
         list_items= list.list_items
