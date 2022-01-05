@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-export default function NewListForm() {
+export default function NewListFrom() {
 
     const [newListData, setNewListData] = useState ({
         name: ''
@@ -12,6 +12,9 @@ export default function NewListForm() {
 
     const [anchorEl, setAnchorEl] = useState(null);
 
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+    
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
      };
@@ -20,12 +23,8 @@ export default function NewListForm() {
         setAnchorEl(null);
     };
 
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-
     function handleNewListSubmit(e){
         e.preventDefault();
-        
         fetch("/lists", {
             method: "POST",
             headers: {
@@ -37,7 +36,6 @@ export default function NewListForm() {
           .then((newList) => setNewListData(newList));
       }
     
-
     function handleNewListChange(e){
         setNewListData({...newListData, [e.target.name]:e.target.value})
     }
