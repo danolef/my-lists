@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,8 +9,20 @@ import Typography from '@mui/material/Typography';
 
 export default function ListItem(){
 
+  const [newListData, setNewListData] = useState([])
+
     function handleItemCardClick(){
         console.log('you clicked the card')
+    }
+
+    function handleDeleteItem(e){
+      e.preventDefault();
+      fetch(`http://localhost:3000/items/${item_id}`, {
+      method: "DELETE",
+    })
+      .then((r) => r.json())
+      .then((deletedItem) => setNewListData(deletedItem));
+  }
     }
 
     function handleItemButtonClick(){
@@ -33,6 +46,7 @@ export default function ListItem(){
               </CardContent>
               <CardActions>
                 <Button onClick={handleItemButtonClick} size="small">...</Button>
+               
               </CardActions>
             </Card>
           );
