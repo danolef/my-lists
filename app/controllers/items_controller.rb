@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
     
+    def index
+        render json: Item.all
+    end
+    
     def create
         item= Item.create!(list_params)
         render json: item, status: :created

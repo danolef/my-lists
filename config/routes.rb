@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
-  resources :list_items, only:[:show, :create]
-  resources :items, only:[:create, :destroy]
-  resources :lists, only: [:index, :create, :destroy]
-  resources :users
+  resources :list_items, only:[:index, :show, :create]
+  resources :items
+  resources :lists
+  resources :users, only: [:index]
   
   get '/signup', to: "users#create"
   get '/me', to: "users#show"
