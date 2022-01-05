@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function ListItem(){
+export default function ListItem({itemData}){
 
     function handleItemCardClick(){
         console.log('you clicked the card')
@@ -19,16 +19,17 @@ export default function ListItem(){
             <Card onClick={handleItemCardClick} sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
+                src= {`${itemData.image_url}`}
                 alt="test image"
                 height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
+                // image= "/static/images/cards/contemplative-reptile.jpg"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  Item name
+                  {`${itemData.name}`}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Price
+                  {`${itemData.price}`}
                 </Typography>
               </CardContent>
               <CardActions>

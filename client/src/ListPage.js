@@ -1,10 +1,19 @@
 import { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 import NewItemForm from './NewItemForm';
+import ListItem from './ListItem'
 
 export default function ListPage(){
     const [newItemAnchorEl, setNewItemAnchorEl] = useState(null);
-    const [listCards, setListCards] = useState([])
+    const [listItemsArr, setListItemArr] = useState([])
+
+    useEffect( () => {
+      fetch("/items")
+      .then ((res) => res.json())
+      .then((items) => setListItemArr(items))
+    }, [])
+
+    console.log(listItemsArr)
 
     const handleNewItemClose = () => {
         setNewItemAnchorEl(null);
@@ -15,11 +24,12 @@ export default function ListPage(){
         console.log('hey im the new item button')
       }
 
-    /*const listItemsArr = data.map(itemData => <ListItem newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose} our props here />*/ 
+    const listItemsCard = listItemsArr.map(itemData => <ListItem itemData= {itemData} newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose} />)
+    
     return(
         <div>
             <h1>Hats</h1>
-            {/*{listItemsArr}*/} 
+            {listItemsCard} 
             <Button onClick={handleNewItemFormClick}> Add New Item </Button>
             <NewItemForm newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose}  />
         </div>
