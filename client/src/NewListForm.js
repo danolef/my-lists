@@ -4,13 +4,13 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-export default function newListFrom {
+export default function NewListForm() {
 
     const [newListData, setNewListData] = useState ({
         newList: ''
     })
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -25,6 +25,17 @@ export default function newListFrom {
 
     function handleNewListSubmit(e){
         e.preventDefault();
+        
+        fetch("/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newListData)
+          })
+          .then((r) => r.json())
+          .then((newList) => setNewListData(newList));
+      }
     }
 
     function handleNewListChange(e){
