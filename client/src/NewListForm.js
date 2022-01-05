@@ -9,7 +9,7 @@ export default function NewListFrom() {
     const [newListData, setNewListData] = useState ({
         name: ''
     })
-
+    
     const [anchorEl, setAnchorEl] = useState(null);
 
     const open = Boolean(anchorEl);
