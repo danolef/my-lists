@@ -6,6 +6,13 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
   
+  # post '/items' do
+  #   item = Item.create(name: params[:name], 
+  #                     image_url: params[:image_url],
+  #                     site_url: params[:site_url],
+  #                     price: params[:price] )
+  #   render json: item
+  # end
   
   private
   
@@ -21,6 +28,7 @@ class ApplicationController < ActionController::API
     @current_user ||= User.find_by(id: session[:user_id])
     render json: { errors: ["Not Authorized"] }, status: :unauthorized unless @current_user
   end
+
 
 
 end

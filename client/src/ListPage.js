@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
+import NewItemForm from './NewItemForm';
 
 export default function ListPage(){
     const [newItemAnchorEl, setNewItemAnchorEl] = useState(null);
@@ -20,6 +21,7 @@ export default function ListPage(){
             <h1>Hats</h1>
             {/*{listItemsArr}*/} 
             <Button onClick={handleNewItemFormClick}> Add New Item </Button>
+            <NewItemForm newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose}  />
         </div>
     )
 }
