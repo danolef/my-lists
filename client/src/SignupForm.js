@@ -5,19 +5,40 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 
-export default function SignupForm({signupAnchorEl, handleSignupClose}){
+export default function SignupForm({signupAnchorEl, handleSignupClose, setUser}){
     const open = Boolean(signupAnchorEl);
     const id = open ? 'simple-popover' : undefined;
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
         password: '',
-        passwordConfirm: ''
+        password_confirmation: ''
     })
   
     function handleSignupSubmit(e){
         e.preventDefault();
-        console.log(e.target.value)
+        console.log(e)
+        fetch("/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(signupData)
+        })
+        .then((res) => {
+          if (res.ok) {
+            res.json()
+            .then((user) => {
+              setUser(user)
+            })
+          } else {
+            res.json()
+            .then((errors) => {
+              console.error(errors)
+            })
+          }
+        })
+        // console.log(e.target.value)
     }
 
     function handleSignupChange(e){
@@ -42,6 +63,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose}){
         }}
       >
  <Box
+      onSubmit={handleSignupSubmit}
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -49,7 +71,6 @@ export default function SignupForm({signupAnchorEl, handleSignupClose}){
       noValidate
       autoComplete="off"
     >
-        <form onSubmit={handleSignupSubmit}>
         <TextField
           onChange={handleSignupChange}
           error
@@ -58,7 +79,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose}){
           value={signupData.username}
           id="outlined-error-helper-text"
           label="Username"
-          defaultValue=""
+          // defaultValue=""
           helperText="Invalid Username. Must be at least 4 characters long, and only use letters and numbers"
         />
         <TextField
@@ -69,7 +90,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose}){
           value={signupData.email}
           id="outlined-error-helper-text"
           label="Email"
-          defaultValue=""
+          // defaultValue=""
           helperText="Invalid Email. Email does not exist"
         />
          <TextField
@@ -80,25 +101,24 @@ export default function SignupForm({signupAnchorEl, handleSignupClose}){
           value={signupData.password}
           id="outlined-error-helper-text"
           label="Password"
-          defaultValue=""
+          // defaultValue=""
           helperText="Invalid Password. Password was incorrect"
         />
         <TextField
           onChange={handleSignupChange}
           error
           type="text" 
-          name="passwordConfirm"
+          name="password_confirmation"
           value={signupData.passwordConfirm}
           id="outlined-error-helper-text"
           label="Confirm Password"
-          defaultValue=""
+          // defaultValue=""
           helperText="Passwords do not match"
         />
         <Button
         type="submit"
         variant='outlined'
         > Login </Button>
-        </form>
         </Box>
       </Popover>
         </div>

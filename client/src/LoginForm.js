@@ -5,17 +5,39 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 
-export default function LoginForm({loginAnchorEl, handleLoginClose}){
+export default function LoginForm({loginAnchorEl, handleLoginClose, setUser}){
     const open = Boolean(loginAnchorEl);
     const id = open ? 'simple-popover' : undefined;
     const [loginData, setLoginData] = useState({
         username: '',
         password: ''
     })
+    
   
     function handleLoginSubmit(e){
         e.preventDefault();
-        console.log(e.target.value)
+        console.log(e)
+        fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginData)
+        })
+        .then((res) => {
+          if (res.ok) {
+            res.json()
+            .then((user) => {
+              setUser(user)
+            })
+          } else {
+            res.json()
+            .then ((errors) => {
+              console.error(errors)
+            })
+          }
+        })
+        // console.log(e.target.value)
     }
 
     function handleLoginChange(e){
@@ -40,6 +62,7 @@ export default function LoginForm({loginAnchorEl, handleLoginClose}){
         }}
       >
  <Box
+      onSubmit={handleLoginSubmit}
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -47,7 +70,6 @@ export default function LoginForm({loginAnchorEl, handleLoginClose}){
       noValidate
       autoComplete="off"
     >
-        <form onSubmit={handleLoginSubmit}>
         <TextField
           onChange={handleLoginChange}
           error
@@ -56,7 +78,7 @@ export default function LoginForm({loginAnchorEl, handleLoginClose}){
           value={loginData.username}
           id="outlined-error-helper-text"
           label="Username"
-          defaultValue=""
+          // defaultValue=""
           helperText="Invalid Username. Must be at least 4 characters long, and only use letters and numbers"
         />
         <TextField
@@ -67,14 +89,13 @@ export default function LoginForm({loginAnchorEl, handleLoginClose}){
           value={loginData.password}
           id="outlined-error-helper-text"
           label="Password"
-          defaultValue=""
+          // defaultValue=""
           helperText="Invalid Password. Password was incorrect"
         />
          <Button
         type="submit"
         variant='outlined'
         > Login </Button>
-        </form>
         </Box>
       </Popover>
         </div>
