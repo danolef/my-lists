@@ -92,9 +92,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Logout'];
 
-export default function MenuHeader() {
+export default function MenuHeader({setUser, user}) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -123,6 +123,16 @@ export default function MenuHeader() {
       setOpen(false);
     };
   
+    function handleLogout(e) {
+      console.log(e)
+      fetch("/logout", {method: "DELETE"})
+      .then((res) => {
+        if (res.ok) {
+          setUser(null)
+        }
+      })
+    }
+    
     return (
       <Box sx={{display: 'flex' }}>
         <CssBaseline />
@@ -191,7 +201,7 @@ export default function MenuHeader() {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            Good Morning, Bubba
+            {`Welcome ${user.username}`}
           </Typography>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -217,7 +227,7 @@ export default function MenuHeader() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography onClick= {handleLogout} textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>

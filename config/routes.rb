@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :lists, only: [:index, :create, :destroy]
   resources :users
   
-  get '/signup', to: "users#create"
+  post '/signup', to: "users#create"
   get '/me', to: "users#show"
   
   post '/login', to: "sessions#create"

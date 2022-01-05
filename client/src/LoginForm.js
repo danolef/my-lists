@@ -16,7 +16,7 @@ export default function LoginForm({loginAnchorEl, handleLoginClose, setUser}){
   
     function handleLoginSubmit(e){
         e.preventDefault();
-        
+        console.log(e)
         fetch("/login", {
           method: "POST",
           headers: {
@@ -62,6 +62,7 @@ export default function LoginForm({loginAnchorEl, handleLoginClose, setUser}){
         }}
       >
  <Box
+      onSubmit={handleLoginSubmit}
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -69,7 +70,6 @@ export default function LoginForm({loginAnchorEl, handleLoginClose, setUser}){
       noValidate
       autoComplete="off"
     >
-        <form onSubmit={handleLoginSubmit}>
         <TextField
           onChange={handleLoginChange}
           error
@@ -78,7 +78,7 @@ export default function LoginForm({loginAnchorEl, handleLoginClose, setUser}){
           value={loginData.username}
           id="outlined-error-helper-text"
           label="Username"
-          defaultValue=""
+          // defaultValue=""
           helperText="Invalid Username. Must be at least 4 characters long, and only use letters and numbers"
         />
         <TextField
@@ -89,14 +89,13 @@ export default function LoginForm({loginAnchorEl, handleLoginClose, setUser}){
           value={loginData.password}
           id="outlined-error-helper-text"
           label="Password"
-          defaultValue=""
+          // defaultValue=""
           helperText="Invalid Password. Password was incorrect"
         />
          <Button
         type="submit"
         variant='outlined'
         > Login </Button>
-        </form>
         </Box>
       </Popover>
         </div>
