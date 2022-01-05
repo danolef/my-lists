@@ -1,12 +1,11 @@
 class ListsController < ApplicationController
 
 def index
-    lists= current_user.List
-    render json: lists
+    render json: List.all
 end
 
 def create
-    list= current_user.list.create!(list_params)
+    list= @current_user.lists.create!(list_params)
     render json: list, status: :created
 end
 
