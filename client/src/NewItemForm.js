@@ -4,6 +4,8 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
+
+
 export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
     const open = Boolean(newItemAnchorEl);
     const id = open ? 'simple-popover' : undefined;
@@ -13,11 +15,22 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
         site_url: '',
         price: ''
     })
+
+  
   
     function handleNewItemSubmit(e){
         e.preventDefault();
         console.log(e.target.value)
-    }
+      fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newItemData)
+      })
+      .then((r) => r.json())
+      .then((newItem) => setNewItemData(newItem));
+  }
 
     function handleNewItemChange(e){
         setNewItemData({...newItemData, [e.target.name]:e.target.value})
