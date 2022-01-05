@@ -5,19 +5,40 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 
-export default function SignupForm({signupAnchorEl, handleSignupClose}){
+export default function SignupForm({signupAnchorEl, handleSignupClose, setUser}){
     const open = Boolean(signupAnchorEl);
     const id = open ? 'simple-popover' : undefined;
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
         password: '',
-        passwordConfirm: ''
+        password_confirmation: ''
     })
   
     function handleSignupSubmit(e){
         e.preventDefault();
-        console.log(e.target.value)
+        console.log(e)
+        fetch("/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(signupData)
+        })
+        .then((res) => {
+          if (res.ok) {
+            res.json()
+            .then((user) => {
+              setUser(user)
+            })
+          } else {
+            res.json()
+            .then((errors) => {
+              console.error(errors)
+            })
+          }
+        })
+        // console.log(e.target.value)
     }
 
     function handleSignupChange(e){

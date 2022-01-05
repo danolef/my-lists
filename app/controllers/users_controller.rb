@@ -1,25 +1,21 @@
 class UsersController < ApplicationController
 
-skip_before_action :authenticate_user, only: [:create, :show]    
+skip_before_action :authorize, only: [:create]
 
 def create
-    user= User.create(user.params)
+    user= User.create!(user_params)
     session[:user_id] = user.id
-    render json: user, status: :ok
+    render json: user, status: :created
 end
 
 def show
-    if current_user
-        render json: current_user, status: :ok
-    else
-        render json: "No current session stored", status: :unauthorized
-    end
+    render json: @current_user, status: :ok
 end
 
 private
 
     def user_params
-        params.permit(:username, :email, :password)
+        params.permit(:username, :email, :password, :password_confirmation)
     end
 
 end
