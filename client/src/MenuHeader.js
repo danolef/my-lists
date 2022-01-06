@@ -24,6 +24,7 @@ import userProfile from './assets/userProfile.jpg'
 import Stack from '@mui/material/Stack';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import ErrorIcon from '@mui/icons-material/Error';
+import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react'
 
@@ -98,10 +99,21 @@ const settings = ['Logout'];
 
 export default function MenuHeader({setUser, user}) {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const [open, setOpen] = useState(false);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
     const [listArr, setListArr] = useState([])
+   
+
+    useEffect(() => {
+      fetch('http://localhost:3000/lists')
+      .then(r => r.json())
+      .then(listsArray => {
+          setLists(listsArray)
+          console.log(lists)
+      })
+  }, [])
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -120,6 +132,7 @@ export default function MenuHeader({setUser, user}) {
   
     const handleDrawerOpen = () => {
       setOpen(true);
+      console.log(lists)
     };
   
     const handleDrawerClose = () => {
@@ -149,9 +162,8 @@ export default function MenuHeader({setUser, user}) {
       fetch(`/lists/${id}`, {
         method: "DELETE"
       })
-      // .then(res => res.json())
       .then(() => {
-        setListArr(listArr.filter(p => p.id !== id))
+        setListArr(listArr.filter(list => list.id !== id))
       })
     }
 
@@ -265,10 +277,8 @@ export default function MenuHeader({setUser, user}) {
           </DrawerHeader>
           <Divider />
           <List>
-
             {listArr.map((list, index) => (
-              <ListItem button key= {list.name}>
-
+              <ListItem /*as={Link} to={`/list/${mylists.id}`}*/button key= {list.name}>
                 <ListItemIcon>
                   {index ? <ListAltIcon /> : <ListAltIcon />}
                 </ListItemIcon>

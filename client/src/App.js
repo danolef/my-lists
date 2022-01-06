@@ -1,22 +1,19 @@
 import './App.css';
+import { Routes, Route } from "react-router-dom";
 import LoginSignupPage from './LoginSignupPage';
-import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
 import RotatingList from './RotatingList';
 import HomePage from './HomePage'
 import MenuHeader from './MenuHeader'
 import ListPage from './ListPage'
+import ItemPage from './ItemPage'
 import NewListForm from './NewListForm'
 import { useState, useEffect } from 'react'
 
-
 function App() {
-
   const [loginAnchorEl, setLoginAnchorEl] = useState(null);
   const [signupAnchorEl, setSignupAnchorEl] = useState(null);
   const [user, setUser] = useState(null);
 
-  
   useEffect(() => {
     fetch("/me")
     .then((res) => {
@@ -39,25 +36,16 @@ function handleSignupClick(event){
     console.log('Signup')
 }
 
-const handleLoginClose = () => {
-  setLoginAnchorEl(null);
-};
-
-const handleSignupClose = () => {
-  setSignupAnchorEl(null);
-};
-
-
+if (user) return <HomePage setUser= {setUser}/>;
 
   return (
     <div className="App">
-      <h1>My Lists</h1>
-      <LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  />
-      <LoginForm loginAnchorEl={loginAnchorEl} handleLoginClose={handleLoginClose} setUser={setUser}/>
-      <SignupForm signupAnchorEl={signupAnchorEl} handleSignupClose={handleSignupClose} setUser= {setUser}/>
-      <MenuHeader setUser= {setUser}/>
-      <ListPage/>
-      <NewListForm/>
+      <Routes>
+      <Route path='/' element={<LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  setLoginAnchorEl={setLoginAnchorEl} setSignupAnchorEl={setSignupAnchorEl} loginAnchorEl={loginAnchorEl} signupAnchorEl={signupAnchorEl} setUser={setUser} /> }/>
+      <Route path='/home' element={<HomePage/>}/>
+      <Route path='/items/:id' element={<ItemPage/>}/>
+      <Route path='/lists/:id' element={<ListPage/>}/>
+      </Routes>
       </div>
   );
 }

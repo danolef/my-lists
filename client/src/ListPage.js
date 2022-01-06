@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 import NewItemForm from './NewItemForm';
+import MenuHeader from './MenuHeader'
 import ListItem from './ListItem'
+
 
 export default function ListPage(){
     const [newItemAnchorEl, setNewItemAnchorEl] = useState(null);
@@ -34,6 +36,7 @@ export default function ListPage(){
     
     return(
         <div>
+            <MenuHeader/>
             <h1>Hats</h1>
             {/* {listItemsCard}  */}
             <Button onClick={handleNewItemFormClick}> Add New Item </Button>

@@ -118,7 +118,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
         <Button
         type="submit"
         variant='outlined'
-        > Login </Button>
+        > Sign Up </Button>
         </Box>
       </Popover>
         </div>
