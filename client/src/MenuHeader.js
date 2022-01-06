@@ -26,7 +26,8 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import ErrorIcon from '@mui/icons-material/Error';
 import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button';
-import { useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
+import {ListContext} from './context/listState'
 
 const drawerWidth = 240;
 
@@ -103,7 +104,7 @@ export default function MenuHeader({setUser, user}) {
     const [open, setOpen] = useState(false);
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const [listArr, setListArr] = useState([])
+    const {listArr, setListArr} = useContext(ListContext)
    
 
   const handleOpenNavMenu = (event) => {
