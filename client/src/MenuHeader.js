@@ -140,17 +140,17 @@ export default function MenuHeader({setUser, user}) {
       fetch("/lists")
       .then((res) => res.json())
       .then((lists) => setListArr(lists))
-    }, [])
+    }, [listArr])
 
-    console.log(listArr)
+    // console.log(listArr)
 
     function handleDelete(id) {
       // console.log(id)
       fetch(`/lists/${id}`, {
         method: "DELETE"
       })
-      .then(res => res.json())
-      .then(data => {
+      // .then(res => res.json())
+      .then(() => {
         setListArr(listArr.filter(p => p.id !== id))
       })
     }
@@ -265,8 +265,10 @@ export default function MenuHeader({setUser, user}) {
           </DrawerHeader>
           <Divider />
           <List>
-            {/* {listArr.map((list, index) => (
-              <ListItem button key={list.name}>
+
+            {listArr.map((list, index) => (
+              <ListItem button key= {list.name}>
+
                 <ListItemIcon>
                   {index ? <ListAltIcon /> : <ListAltIcon />}
                 </ListItemIcon>
