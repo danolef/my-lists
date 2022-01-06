@@ -106,15 +106,6 @@ export default function MenuHeader({setUser, user}) {
     const [listArr, setListArr] = useState([])
    
 
-    useEffect(() => {
-      fetch('http://localhost:3000/lists')
-      .then(r => r.json())
-      .then(listsArray => {
-          setLists(listsArray)
-          console.log(lists)
-      })
-  }, [])
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -132,7 +123,6 @@ export default function MenuHeader({setUser, user}) {
   
     const handleDrawerOpen = () => {
       setOpen(true);
-      console.log(lists)
     };
   
     const handleDrawerClose = () => {
@@ -153,7 +143,7 @@ export default function MenuHeader({setUser, user}) {
       fetch("/lists")
       .then((res) => res.json())
       .then((lists) => setListArr(lists))
-    }, [listArr])
+    }, [] /* [listArr]*/)
 
     // console.log(listArr)
 
@@ -285,7 +275,9 @@ export default function MenuHeader({setUser, user}) {
                 <ListItemText primary={list.name} />
                 <Button onClick={() => handleDelete(list.id)} size="small">X</Button>
               </ListItem>
-            ))} 
+
+            ))}
+
           </List>
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

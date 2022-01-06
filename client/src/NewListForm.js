@@ -33,7 +33,7 @@ export default function NewListFrom() {
             body: JSON.stringify(newListData)
           })
           .then((r) => r.json())
-          .then((newList) => setNewListData(newList));
+        //   .then((newList) => setNewListData([...newListData, newList]));
       }
     
     function handleNewListChange(e){

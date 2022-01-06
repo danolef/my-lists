@@ -110,7 +110,6 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
         type="submit"
         variant='outlined'
         > Add Item </Button>
-        </form>
         </Box>
       </Popover>
         </div>
