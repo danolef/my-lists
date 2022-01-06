@@ -9,6 +9,11 @@ def create
     render json: list, status: :created
 end
 
+def show
+    list= List.find(params[:id])
+    render json: list
+end
+
 def destroy
     list= List.find_by(id: params[:id])
     list.destroy

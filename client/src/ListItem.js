@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function ListItem({name, price, site_url, picture, listItemsArr, setListItemArr}){
+export default function ListItem({name, price, site_url, picture, id, listItemsArr, setListItemArr}){
 
   const [newListData, setNewListData] = useState([])
 
@@ -35,19 +35,19 @@ export default function ListItem({name, price, site_url, picture, listItemsArr, 
             <Card onClick={handleItemCardClick} sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
-                src= {`${picture}`}
+                src= {picture}
                 alt="test image"
                 height="140"
                 // image="/static/images/cards/contemplative-reptile.jpg"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {`${name}`}
+                  {name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {`${price}`}
+                  {price}
                 </Typography>
-                <Button onClick={() => handleDeleteItem(itemData.id)} size="small">Delete</Button>
+                <Button onClick={() => handleDeleteItem(id)} size="small">Delete</Button>
               </CardContent>
               <CardActions>
                 <Button onClick={handleItemButtonClick} size="small">...</Button>
