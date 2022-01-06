@@ -50,7 +50,6 @@ export default function ListItem({itemData, listItemsArr, setListItemArr}){
               </CardContent>
               <CardActions>
                 <Button onClick={handleItemButtonClick} size="small">...</Button>
-               
               </CardActions>
             </Card>
           );

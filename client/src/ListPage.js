@@ -38,7 +38,7 @@ export default function ListPage(){
         <div>
             <MenuHeader/>
             <h1>Hats</h1>
-            {/* {listItemsCard}  */}
+            {listItemsCard}  
             <Button onClick={handleNewItemFormClick}> Add New Item </Button>
             <NewItemForm newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose}  />
         </div>
