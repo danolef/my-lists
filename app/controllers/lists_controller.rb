@@ -5,7 +5,7 @@ def index
 end
 
 def create
-    list= @current_user.lists.create!(list_params)
+    list= Lists.create!(list_params)
     render json: list, status: :created
 end
 
