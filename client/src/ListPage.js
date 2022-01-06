@@ -13,7 +13,7 @@ export default function ListPage(){
       .then((items) => setListItemArr(items))
     }, [])
 
-    console.log(listItemsArr)
+    // console.log(listItemsArr)
 
     const handleNewItemClose = () => {
         setNewItemAnchorEl(null);
@@ -24,7 +24,7 @@ export default function ListPage(){
         console.log('hey im the new item button')
       }
 
-    const listItemsCard = listItemsArr.map(itemData => <ListItem itemData= {itemData} newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose} />)
+    const listItemsCard = listItemsArr.map(itemData => <ListItem key ={itemData.id} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr} itemData= {itemData} newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose} />)
     
     return(
         <div>
