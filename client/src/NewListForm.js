@@ -1,10 +1,13 @@
-import {useState} from 'react'
+import {useContext, useState} from 'react'
+import {ListContext} from './context/listState'
 import Popover from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 export default function NewListFrom() {
+
+   const {listArr, setListArr} = useContext(ListContext)
 
     const [newListData, setNewListData] = useState ({
         name: ''
@@ -33,7 +36,7 @@ export default function NewListFrom() {
             body: JSON.stringify(newListData)
           })
           .then((r) => r.json())
-        //   .then((newList) => setNewListData([...newListData, newList]));
+          .then((newList) => setListArr([...listArr, newList]));
       }
     
     function handleNewListChange(e){

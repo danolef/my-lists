@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { ListProvider } from './context/listState'
 import './index.css';
 import App from './App';
 
 
 ReactDOM.render(
+  <ListProvider>
   <BrowserRouter>
     <App />
-  </BrowserRouter>,
+  </BrowserRouter>
+  </ListProvider>,
   document.getElementById('root')
 );
 
