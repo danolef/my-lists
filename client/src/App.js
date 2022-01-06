@@ -6,6 +6,7 @@ import HomePage from './HomePage'
 import MenuHeader from './MenuHeader'
 import ListPage from './ListPage'
 import ItemPage from './ItemPage'
+import NewListForm from './NewListForm'
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -44,7 +45,6 @@ if (user) return <HomePage setUser= {setUser}/>;
       <Route path='/home' element={<HomePage/>}/>
       <Route path='/items/:id' element={<ItemPage/>}/>
       <Route path='/lists/:id' element={<ListPage/>}/>
-    
       </Routes>
       </div>
   );

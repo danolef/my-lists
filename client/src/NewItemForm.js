@@ -54,6 +54,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
         }}
       >
  <Box
+      onSubmit={handleNewItemSubmit}
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -61,7 +62,6 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
       noValidate
       autoComplete="off"
     >
-        <form onSubmit={handleNewItemSubmit}>
         <TextField
           onChange={handleNewItemChange}
           error
@@ -70,7 +70,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
           value={newItemData.name}
           id="outlined-error-helper-text"
           label="name"
-          defaultValue=""
+          // defaultValue=""
           helperText="You must enter an item name"
         />
         <TextField
@@ -81,7 +81,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
           value={newItemData.image_url}
           id="outlined-error-helper-text"
           label="Image URL"
-          defaultValue=""
+          // defaultValue=""
           helperText="You must enter the items URL"
         />
 
@@ -93,7 +93,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
           value={newItemData.site_url}
           id="outlined-error-helper-text"
           label="Site URL"
-          defaultValue=""
+          // defaultValue=""
           helperText="You must enter the items URL"
         />
         <TextField
@@ -103,7 +103,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
           value={newItemData.price}
           id="outlined-error-helper-text"
           label="Price"
-          defaultValue=""
+          // defaultValue=""
           helperText="Optional"
         />
          <Button

@@ -24,8 +24,9 @@ import userProfile from './assets/userProfile.jpg'
 import Stack from '@mui/material/Stack';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import ErrorIcon from '@mui/icons-material/Error';
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Button from '@mui/material/Button';
+import { useState, useEffect } from 'react'
 
 const drawerWidth = 240;
 
@@ -98,10 +99,11 @@ const settings = ['Logout'];
 
 export default function MenuHeader({setUser, user}) {
     const theme = useTheme();
+
     const [open, setOpen] = useState(false);
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const [lists, setLists] = useState([])
+    const [listArr, setListArr] = useState([])
    
 
     useEffect(() => {
@@ -112,8 +114,6 @@ export default function MenuHeader({setUser, user}) {
           console.log(lists)
       })
   }, [])
-    
-   const mylists = lists.map(list => list.name)
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -149,6 +149,24 @@ export default function MenuHeader({setUser, user}) {
       })
     }
     
+    useEffect(()=> {
+      fetch("/lists")
+      .then((res) => res.json())
+      .then((lists) => setListArr(lists))
+    }, [listArr])
+
+    // console.log(listArr)
+
+    function handleDelete(id) {
+      // console.log(id)
+      fetch(`/lists/${id}`, {
+        method: "DELETE"
+      })
+      .then(() => {
+        setListArr(listArr.filter(list => list.id !== id))
+      })
+    }
+
     return (
       <Box sx={{display: 'flex' }}>
         <CssBaseline />
@@ -259,14 +277,15 @@ export default function MenuHeader({setUser, user}) {
           </DrawerHeader>
           <Divider />
           <List>
-            {mylists.map((text, index) => (
-              <ListItem /*as={Link} to="list"*/ button key={text}>
+            {listArr.map((list, index) => (
+              <ListItem /*as={Link} to={`/list/${mylists.id}`}*/button key= {list.name}>
                 <ListItemIcon>
                   {index ? <ListAltIcon /> : <ListAltIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={list.name} />
+                <Button onClick={() => handleDelete(list.id)} size="small">X</Button>
               </ListItem>
-            ))}
+            ))} */}
           </List>
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
