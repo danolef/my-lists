@@ -5,13 +5,13 @@ class ListItemsController < ApplicationController
     end
     
     def show
-        list= List.find_by(params[:id])
+        list=List.find_by(params[:id])
         list_items= list.list_items
         render json: list_items
     end
 
     def create
-        list_item= List_item.create(list_item_params)
+        list_item=ListItem.create(list_item_params)
         render json: list_item, status: :created
     end
 

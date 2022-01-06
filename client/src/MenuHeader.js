@@ -26,7 +26,8 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import ErrorIcon from '@mui/icons-material/Error';
 import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button';
-import { useState, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
+import {ListContext} from './context/listState'
 
 const drawerWidth = 240;
 
@@ -103,9 +104,8 @@ export default function MenuHeader({setUser, user}) {
     const [open, setOpen] = useState(false);
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const [listArr, setListArr] = useState([])
+    const {listArr, setListArr} = useContext(ListContext)
    
-
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -124,7 +124,7 @@ export default function MenuHeader({setUser, user}) {
   
     const handleDrawerOpen = () => {
       setOpen(true);
-     
+
     };
   
     const handleDrawerClose = () => {
@@ -146,6 +146,8 @@ export default function MenuHeader({setUser, user}) {
       .then((res) => res.json())
       .then((lists) => setListArr(lists))
     }, [])
+
+
 
     // console.log(listArr)
 
@@ -270,14 +272,16 @@ export default function MenuHeader({setUser, user}) {
           <Divider />
           <List>
             {listArr.map((list, index) => (
-              <ListItem /*as={Link} to={`/list/${mylists.id}`}*/button key= {list.name}>
+              <ListItem as={Link} to={`/lists/${list.id}`} button key= {list.name}>
                 <ListItemIcon>
                   {index ? <ListAltIcon /> : <ListAltIcon />}
                 </ListItemIcon>
                 <ListItemText primary={list.name} />
                 <Button onClick={() => handleDelete(list.id)} size="small">X</Button>
               </ListItem>
-            ))} 
+
+            ))}
+
           </List>
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

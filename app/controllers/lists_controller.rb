@@ -1,5 +1,4 @@
 class ListsController < ApplicationController
-skip_before_action :authorize
 
 def index
     render json: List.all
@@ -8,6 +7,11 @@ end
 def create
     list= Lists.create!(list_params)
     render json: list, status: :created
+end
+
+def show
+    list= List.find(params[:id])
+    render json: list
 end
 
 def destroy
