@@ -2,14 +2,15 @@
 // import Menu from './menu'
 import MenuHeader from './MenuHeader'
 import RotatingList from './RotatingList'
+import NewListForm from './NewListForm'
 
-export default function HomePage(){
+export default function HomePage({setUser}){
     return(
         <>
-        {/* <Header/> */}
-        {/* <Menu/> */}
-        <MenuHeader/>
-        {/* <RotatingList/> */}
+        <MenuHeader setUser= {setUser}/>
+        <RotatingList/>
+        <br/>
+        <NewListForm/>
         </>
     )
 }

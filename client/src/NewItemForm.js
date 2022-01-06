@@ -109,7 +109,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
          <Button
         type="submit"
         variant='outlined'
-        > Login </Button>
+        > Add Item </Button>
         </form>
         </Box>
       </Popover>

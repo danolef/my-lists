@@ -24,6 +24,8 @@ import userProfile from './assets/userProfile.jpg'
 import Stack from '@mui/material/Stack';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import ErrorIcon from '@mui/icons-material/Error';
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const drawerWidth = 240;
 
@@ -96,9 +98,22 @@ const settings = ['Logout'];
 
 export default function MenuHeader({setUser, user}) {
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [open, setOpen] = useState(false);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
+    const [lists, setLists] = useState([])
+   
+
+    useEffect(() => {
+      fetch('http://localhost:3000/lists')
+      .then(r => r.json())
+      .then(listsArray => {
+          setLists(listsArray)
+          console.log(lists)
+      })
+  }, [])
+    
+   const mylists = lists.map(list => list.name)
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -117,6 +132,7 @@ export default function MenuHeader({setUser, user}) {
   
     const handleDrawerOpen = () => {
       setOpen(true);
+      console.log(lists)
     };
   
     const handleDrawerClose = () => {
@@ -243,8 +259,8 @@ export default function MenuHeader({setUser, user}) {
           </DrawerHeader>
           <Divider />
           <List>
-            {['Hats', 'Shirts', 'Car Manuals', 'Game Manuals', 'SportsWear'].map((text, index) => (
-              <ListItem button key={text}>
+            {mylists.map((text, index) => (
+              <ListItem /*as={Link} to="list"*/ button key={text}>
                 <ListItemIcon>
                   {index ? <ListAltIcon /> : <ListAltIcon />}
                 </ListItemIcon>
