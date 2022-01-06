@@ -6,9 +6,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import UpdateItemForm from './UpdateItemForm'
 
 export default function ListItem({name, price, site_url, picture, id, listItemsArr, setListItemArr}){
 
+  const [updateItemAnchorEl, setUpdateItemAnchorEl] = useState(null);
   const [newListData, setNewListData] = useState([])
 
 
@@ -21,13 +23,20 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
       fetch(`items/${id}`, {
       method: "DELETE",
     })
-      // .then((r) => r.json())
       .then(() => {
         setListItemArr(listItemsArr.filter(p => p.id !== id))
       })
 
     }
   
+    const handleUpdateItemClose = () => {
+      setUpdateItemAnchorEl(null);
+    };
+
+    function handleUpdateItemFormClick(event){
+      setUpdateItemAnchorEl(event.currentTarget)
+    }
+
     function handleItemButtonClick(){
         console.log('youclicked the item card button')
     }
@@ -48,6 +57,8 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
                   {price}
                 </Typography>
                 <Button onClick={() => handleDeleteItem(id)} size="small">Delete</Button>
+                <Button onClick={handleUpdateItemFormClick}> Update Item </Button>
+                <UpdateItemForm updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr}/>
               </CardContent>
               <CardActions>
                 <Button onClick={handleItemButtonClick} size="small">...</Button>
