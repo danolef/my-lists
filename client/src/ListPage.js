@@ -31,14 +31,14 @@ export default function ListPage(){
     // const listItemsCard = listItemsArr.map(itemData => <ListItem itemData= {itemData} listItemsArr={listItemsArr} setListItemArr={setListItemArr} newItemAnchorEl={newItemAnchorEl} 
     //   handleNewItemClose={handleNewItemClose} />)
 
-    const listItemsCard = listItemsArr.map(itemData => <ListItem key ={itemData.id} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr} itemData= {itemData} newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose} />)
+    const listItemsCard = listItemsArr.map(itemData => <ListItem key ={itemData.id} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr} name= {itemData.name} siteUrl= {listData.site_url} picture= {listData.image_url} price= {listData.price} newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose} />)
 
     
     return(
         <div>
             <MenuHeader/>
             <h1>Hats</h1>
-            {/* {listItemsCard}  */}
+            {{listItemsCard}}
             <Button onClick={handleNewItemFormClick}> Add New Item </Button>
             <NewItemForm newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose}  />
         </div>
