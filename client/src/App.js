@@ -40,7 +40,7 @@ function handleSignupClick(event){
       <Routes>
       <Route path='/lists/:id' element={<ListPage/>}/>
       <Route path='/items/:id' element={<ItemPage/>}/>
-      <Route path='/home' element={<HomePage/>}/>
+      <Route path='/home' element={<HomePage setUser= {setUser}/>}/>
       <Route path='/' element={<LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  setLoginAnchorEl={setLoginAnchorEl} setSignupAnchorEl={setSignupAnchorEl} loginAnchorEl={loginAnchorEl} signupAnchorEl={signupAnchorEl} setUser={setUser} /> }/>
       </Routes>
       </div>
