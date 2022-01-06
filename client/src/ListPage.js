@@ -16,8 +16,6 @@ export default function ListPage(){
       .then((items) => setListItemArr(items))
     }, [])
 
-
-
     const handleNewItemClose = () => {
         setNewItemAnchorEl(null);
       };
