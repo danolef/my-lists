@@ -12,11 +12,12 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
 
   const [updateItemAnchorEl, setUpdateItemAnchorEl] = useState(null);
   const [newListData, setNewListData] = useState([])
+  // const [itemId, setItemId] = useState('')
+  console.log(id)
 
-
-    function handleItemCardClick(){
-        console.log('you clicked the card')
-    }
+    // function handleItemCardClick(){
+    //     console.log('you clicked the card')
+    // }
 
     function handleDeleteItem(id){
 
@@ -35,13 +36,14 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
 
     function handleUpdateItemFormClick(event){
       setUpdateItemAnchorEl(event.currentTarget)
+      console.log(event.target)
     }
 
     function handleItemButtonClick(){
         console.log('youclicked the item card button')
     }
         return (
-            <Card onClick={handleItemCardClick} sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
                 src= {picture}
@@ -57,8 +59,8 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
                   {price}
                 </Typography>
                 <Button onClick={() => handleDeleteItem(id)} size="small">Delete</Button>
-                <Button onClick={handleUpdateItemFormClick}> Update Item </Button>
-                <UpdateItemForm updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr}/>
+                <Button onClick={handleUpdateItemFormClick} > Update Item </Button>
+                <UpdateItemForm itemId={id} updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr}/>
               </CardContent>
               <CardActions>
                 <Button onClick={handleItemButtonClick} size="small">...</Button>

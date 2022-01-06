@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 
 
 
-export default function UpdateItemForm({updateItemAnchorEl, handleUpdateItemClose, listItemsArr, setListItemArr}){
+export default function UpdateItemForm({itemId, updateItemAnchorEl, handleUpdateItemClose, listItemsArr, setListItemArr}){
     const open = Boolean(updateItemAnchorEl);
     const id = open ? 'simple-popover' : undefined;
     const [updateItemData, setUpdateItemData] = useState({
@@ -15,28 +15,33 @@ export default function UpdateItemForm({updateItemAnchorEl, handleUpdateItemClos
         site_url: '',
         price: ''
     })
-
-  
-  
-    function handleUpdateItemSubmit(e, updateItemData, item){
+    console.log(updateItemData)
+    console.log(itemId)
+    
+    
+    function handleUpdateItemSubmit(e, itemId, updateItemData){
         e.preventDefault();
-      fetch(`/items/${item.id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({...item, updateItemData})
-      })
-      .then(res => res.json())
-      .then(updateItem => {
-        setListItemArr(listItemsArr.map(item => {
-              if(item.id === updateItem.id){
-                  return updateItem
-              } else {
-                  return item
-              }
-          }))
-      })
+        const letItemId = itemId
+        console.log(letItemId)
+        
+        
+    //   fetch(`/items/${item.id}`, {
+    //     method: "PATCH",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({...item, updateItemData})
+    //   })
+    //   .then(res => res.json())
+    //   .then(updateItem => {
+    //     setListItemArr(listItemsArr.map(item => {
+    //           if(item === updateItem.id){
+    //               return updateItem
+    //           } else {
+    //               return item
+    //           }
+    //       }))
+    //   })
   }
 
     function handleUpdateItemChange(e){
@@ -60,7 +65,7 @@ export default function UpdateItemForm({updateItemAnchorEl, handleUpdateItemClos
         }}
       >
  <Box
-      onSubmit={(e)=> handleUpdateItemSubmit(e, item)}
+      onSubmit={handleUpdateItemSubmit}
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
