@@ -265,7 +265,7 @@ export default function MenuHeader({setUser, user}) {
           </DrawerHeader>
           <Divider />
           <List>
-            {listArr.map((list, index) => (
+            {/* {listArr.map((list, index) => (
               <ListItem button key={list.name}>
                 <ListItemIcon>
                   {index ? <ListAltIcon /> : <ListAltIcon />}
@@ -273,7 +273,7 @@ export default function MenuHeader({setUser, user}) {
                 <ListItemText primary={list.name} />
                 <Button onClick={() => handleDelete(list.id)} size="small">X</Button>
               </ListItem>
-            ))}
+            ))} */}
           </List>
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

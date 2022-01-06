@@ -7,22 +7,19 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function ListItem({itemData}){
-
-  const [newListData, setNewListData] = useState([])
+export default function ListItem({ setListItemArr, itemData, listItemArr }){
+  
 
     function handleItemCardClick(){
         console.log('you clicked the card')
     }
 
-    function handleDeleteItem(e){
-      e.preventDefault();
-      fetch(`http://localhost:3000/items/${item_id}`, {
+    function handleDeleteItem(id){
+      fetch(`/items/${id}`, {
       method: "DELETE",
     })
       .then((r) => r.json())
-      .then((deletedItem) => setNewListData(deletedItem));
-  }
+      .then((data) => setListItemArr(listItemArr.filter(p => p.id !== id)));
     }
 
     function handleItemButtonClick(){
@@ -32,17 +29,16 @@ export default function ListItem({itemData}){
             <Card onClick={handleItemCardClick} sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
-                src= {`${itemData.image_url}`}
                 alt="test image"
                 height="140"
-                // image= "/static/images/cards/contemplative-reptile.jpg"
+                image="/static/images/cards/contemplative-reptile.jpg"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {`${itemData.name}`}
+                  Item name
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {`${itemData.price}`}
+                  Price
                 </Typography>
               </CardContent>
               <CardActions>
