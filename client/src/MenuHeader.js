@@ -269,7 +269,7 @@ export default function MenuHeader({setUser, user}) {
           <Divider />
           <List>
             {listArr.map((list, index) => (
-              <ListItem /*as={Link} to={`/list/${mylists.id}`}*/button key= {list.name}>
+              <ListItem as={Link} to={`/lists/${list.id}`} button key= {list.name}>
                 <ListItemIcon>
                   {index ? <ListAltIcon /> : <ListAltIcon />}
                 </ListItemIcon>
