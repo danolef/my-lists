@@ -11,11 +11,13 @@ export default function ListItem({itemData, listItemsArr, setListItemArr}){
 
   const [newListData, setNewListData] = useState([])
 
+
     function handleItemCardClick(){
         console.log('you clicked the card')
     }
 
     function handleDeleteItem(id){
+
       fetch(`items/${id}`, {
       method: "DELETE",
     })
@@ -23,6 +25,7 @@ export default function ListItem({itemData, listItemsArr, setListItemArr}){
       .then(() => {
         setListItemArr(listItemsArr.filter(p => p.id !== id))
       })
+
     }
   
     function handleItemButtonClick(){
@@ -32,17 +35,16 @@ export default function ListItem({itemData, listItemsArr, setListItemArr}){
             <Card onClick={handleItemCardClick} sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
-                src= {`${itemData.image_url}`}
                 alt="test image"
                 height="140"
-                // image= "/static/images/cards/contemplative-reptile.jpg"
+                image="/static/images/cards/contemplative-reptile.jpg"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {`${itemData.name}`}
+                  Item name
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {`${itemData.price}`}
+                  Price
                 </Typography>
                 <Button onClick={() => handleDeleteItem(itemData.id)} size="small">Delete</Button>
               </CardContent>
