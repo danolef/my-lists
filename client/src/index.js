@@ -3,18 +3,21 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ListProvider } from './context/listState'
 import { ListIdProvider } from './context/listIdState'
+import { SiteProvider } from './context/siteState'
 import './index.css';
 import App from './App';
 
 
 ReactDOM.render(
+  <SiteProvider>
   <ListProvider>
   <ListIdProvider>
   <BrowserRouter>
     <App />
   </BrowserRouter>
   </ListIdProvider>
-  </ListProvider>,
+  </ListProvider>
+  </SiteProvider>,
   document.getElementById('root')
 );
 
