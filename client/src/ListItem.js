@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,17 +8,19 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import UpdateItemForm from './UpdateItemForm'
+import { Link } from 'react-router-dom'
+import {SiteContext} from './context/siteState'
 
 export default function ListItem({name, price, siteUrl, picture, id, listItemsArr, setListItemArr}){
-
-
   const [updateItemAnchorEl, setUpdateItemAnchorEl] = useState(null);
   const [newListData, setNewListData] = useState([])
+  const {site, setSite} = useContext(SiteContext)
   // const [itemId, setItemId] = useState('')
   
-
     function handleItemCardClick(siteUrl){
-        console.log(siteUrl)
+        setSite(siteUrl)
+        console.log('initialsite:', siteUrl)
+        console.log('siteState:', site)
         console.log('you clicked the card')
     }
 
@@ -44,7 +46,6 @@ export default function ListItem({name, price, siteUrl, picture, id, listItemsAr
       // )
     }
     
-
     function handleItemButtonClick(){
         console.log('you clicked the item card button')
     }
@@ -52,7 +53,7 @@ export default function ListItem({name, price, siteUrl, picture, id, listItemsAr
         return (
 
           <Grid item xs={12} sm={6} md={1.5}>
-            <Card onClick={()=>handleItemCardClick(siteUrl)} sx={{ maxWidth: 345, minHeight: 350, maxHeight: 350}}>
+            <Card as={Link} to={`/items/5`} onClick={()=>handleItemCardClick(siteUrl)} sx={{ maxWidth: 345, minHeight: 350, maxHeight: 350}}>
               <CardMedia
                 component="img"
                 src= {picture}
@@ -68,7 +69,7 @@ export default function ListItem({name, price, siteUrl, picture, id, listItemsAr
                   {null ? '' : price}
                 </Typography>
                 <Button onClick={() => handleDeleteItem(id)} size="small">Delete</Button>
-                 <UpdateItemForm name= {name} price= {price} siteUrl= {siteUrl} picture= {picture} itemId={id} updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr}/>
+                 <UpdateItemForm name={name} price={price} siteUrl={siteUrl} picture={picture} itemId={id} updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr={listItemsArr} setListItemArr={setListItemArr}/>
               </CardContent>
               <CardActions>
                 <Button onClick={handleItemButtonClick} size="small">...</Button>
