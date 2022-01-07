@@ -6,13 +6,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 export default function ListItem({name, price, site_url, picture, id, listItemsArr, setListItemArr}){
 
   const [newListData, setNewListData] = useState([])
 
 
-    function handleItemCardClick(){
+    function handleItemCardClick(site_url){
+        console.log(site_url)
         console.log('you clicked the card')
     }
 
@@ -25,27 +27,28 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
       .then(() => {
         setListItemArr(listItemsArr.filter(p => p.id !== id))
       })
-
     }
   
     function handleItemButtonClick(){
-        console.log('youclicked the item card button')
+        console.log('you clicked the item card button')
     }
+
         return (
-            <Card onClick={handleItemCardClick} sx={{ maxWidth: 345 }}>
+          <Grid item xs={12} sm={6} md={1.5}>
+            <Card onClick={()=>handleItemCardClick(site_url)} sx={{ maxWidth: 345, minHeight: 350, maxHeight: 350}}>
               <CardMedia
                 component="img"
                 src= {`${picture}`}
-                alt="test image"
-                height="140"
+                alt="item image"
+                height="200"
                 // image="/static/images/cards/contemplative-reptile.jpg"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h8" component="div">
                   {`${name}`}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {`${price}`}
+                  {null ? '' : price}
                 </Typography>
                 <Button onClick={() => handleDeleteItem(id)} size="small">Delete</Button>
               </CardContent>
@@ -53,5 +56,6 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
                 <Button onClick={handleItemButtonClick} size="small">...</Button>
               </CardActions>
             </Card>
+            </Grid>
           );
         }

@@ -36,7 +36,7 @@ function handleSignupClick(event){
     console.log('Signup')
 }
 
-if (user) return <HomePage setUser= {setUser}/>;
+// if (user) return <HomePage setUser= {setUser}/>;
 
   return (
     <div className="App">
