@@ -8,12 +8,12 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import UpdateItemForm from './UpdateItemForm'
 
-export default function ListItem({name, price, site_url, picture, id, listItemsArr, setListItemArr}){
+export default function ListItem({name, price, siteUrl, picture, id, listItemsArr, setListItemArr}){
 
   const [updateItemAnchorEl, setUpdateItemAnchorEl] = useState(null);
   const [newListData, setNewListData] = useState([])
   // const [itemId, setItemId] = useState('')
-  console.log(id)
+  
 
     // function handleItemCardClick(){
     //     console.log('you clicked the card')
@@ -36,8 +36,12 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
 
     function handleUpdateItemFormClick(event){
       setUpdateItemAnchorEl(event.currentTarget)
-      console.log(event.target)
+      // setItemId(prevState => {
+      //   return {id}
+      // }
+      // )
     }
+    
 
     function handleItemButtonClick(){
         console.log('youclicked the item card button')
@@ -60,7 +64,7 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
                 </Typography>
                 <Button onClick={() => handleDeleteItem(id)} size="small">Delete</Button>
                 <Button onClick={handleUpdateItemFormClick} > Update Item </Button>
-                <UpdateItemForm itemId={id} updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr}/>
+                <UpdateItemForm name= {name} price= {price} siteUrl= {siteUrl} picture= {picture} itemId={id} updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr}/>
               </CardContent>
               <CardActions>
                 <Button onClick={handleItemButtonClick} size="small">...</Button>

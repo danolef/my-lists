@@ -6,42 +6,41 @@ import Button from '@mui/material/Button';
 
 
 
-export default function UpdateItemForm({itemId, updateItemAnchorEl, handleUpdateItemClose, listItemsArr, setListItemArr}){
+export default function UpdateItemForm({name, price, siteUrl, picture, itemId, updateItemAnchorEl, handleUpdateItemClose, listItemsArr, setListItemArr}){
     const open = Boolean(updateItemAnchorEl);
     const id = open ? 'simple-popover' : undefined;
     const [updateItemData, setUpdateItemData] = useState({
-        name: '',
-        image_url: '',
-        site_url: '',
-        price: ''
+        name: name,
+        image_url: picture,
+        site_url: siteUrl,
+        price: price
     })
     console.log(updateItemData)
-    console.log(itemId)
+    console.log("itemId:",itemId)
     
     
-    function handleUpdateItemSubmit(e, itemId, updateItemData){
+    function handleUpdateItemSubmit(e){
         e.preventDefault();
-        const letItemId = itemId
-        console.log(letItemId)
+        console.log(itemId)
         
         
-    //   fetch(`/items/${item.id}`, {
-    //     method: "PATCH",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({...item, updateItemData})
-    //   })
-    //   .then(res => res.json())
-    //   .then(updateItem => {
-    //     setListItemArr(listItemsArr.map(item => {
-    //           if(item === updateItem.id){
-    //               return updateItem
-    //           } else {
-    //               return item
-    //           }
-    //       }))
-    //   })
+      fetch(`/items/${itemId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateItemData)
+      })
+      .then(res => res.json())
+      .then(updateItem => {
+        setListItemArr(listItemsArr.map(item => {
+              if(item.id === updateItem.id){
+                  return updateItem
+              } else {
+                  return item
+              }
+          }))
+      })
   }
 
     function handleUpdateItemChange(e){
