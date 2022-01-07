@@ -5,6 +5,7 @@ import HomePage from './HomePage'
 import ListPage from './ListPage'
 import ItemPage from './ItemPage'
 import { useState, useEffect } from 'react'
+import RotatingList from './RotatingList';
 
 function App() {
   const [loginAnchorEl, setLoginAnchorEl] = useState(null);
@@ -43,6 +44,7 @@ function handleSignupClick(event){
       <Route path='/home' element={<HomePage setUser= {setUser}/>}/>
       <Route path='/' element={<LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  setLoginAnchorEl={setLoginAnchorEl} setSignupAnchorEl={setSignupAnchorEl} loginAnchorEl={loginAnchorEl} signupAnchorEl={signupAnchorEl} setUser={setUser} /> }/>
       </Routes>
+      <RotatingList />
       </div>
   );
 }
