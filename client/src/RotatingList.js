@@ -1,44 +1,78 @@
 import React from "react";
-import Slider from "react-slick";
-import "./styles.css"
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+import Pagination from '@mui/material/Pagination';
+import Grid from '@mui/material/Grid';
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 export default function RotatingList() {
-  const settings = {
-    arrows: true,
-    dots: true,
-    autoplay: true,
-    centerMode: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1
-  };
   return (
-    <Slider {...settings}>
-      <div>
-        <h3>uno</h3>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCNSR8_oAgw8zstz_tTuzZdkGYQmwkgMeHfA&usqp=CAU" alt="first slide" />
-      </div>
-      <div>
-        <h3>dos</h3>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGoOOsEH2E-3E05nW73DMbueqcA53Z-i5RGg&usqp=CAU" alt="first slide" />
-      </div>
-      <div>
-        <h3>tres</h3>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGACqH1WnGgfwdzoanOsLSr_hpt0rKLhrr2g&usqp=CAU" alt="first slide" />
-      </div>
-      <div>
-        <h3>cuatro</h3>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVl6HcbL4_TsTQcuGyzahCy1ntkXal5dh0Mg&usqp=CAU" alt="first slide" />
-      </div>
-      <div>
-        <h3>cinco</h3>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf9LEMu1-3mGKAyEZPfd3M423I3gNiif-p2Q&usqp=CAU" alt="first slide" />
-      </div>
-      <div>
-        <h3>seis</h3>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkW4eNxxfnvUxr1AA31tcz6MaAoDS5Hy1z6w&usqp=CAU" alt="first slide" />
-      </div>
-    </Slider>
+    <Card sx={{ maxWidth= "240"}}>
+      <Grid item xs={12} sm={6} md={1.5}>
+     
+      <CardMedia
+        component="img"
+        height="140"
+        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
+        alt="green iguana"
+      />
+      
+      <Item>
+      <CardMedia
+        component="img"
+        height="140"
+        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
+        alt="green iguana"
+      />
+      </Item>
+      <Item>
+      <CardMedia
+        component="img"
+        height="140"
+        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
+        alt="green iguana"
+      />
+      </Item>
+      <Item>
+      <CardMedia
+        component="img"
+        height="140"
+        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
+        alt="green iguana"
+      />
+      </Item>
+      <Item>
+      <CardMedia
+        component="img"
+        height="140"
+        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
+        alt="green iguana"
+      />
+      </Item>
+      <Item>
+      <CardMedia
+        component="img"
+        height="140"
+        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
+        alt="green iguana"
+      />
+      </Item>
+     
+      </Grid>
+      </Card>
+    
   );
 }
