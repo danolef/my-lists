@@ -26,9 +26,11 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import ErrorIcon from '@mui/icons-material/Error';
 import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button';
+import stackLogo from './assets/stackLogo.png'   
 import { useContext, useState, useEffect } from 'react'
 import {ListContext} from './context/listState'
 import {ListIdContext} from './context/listIdState'
+import {ListNameContext} from './context/listNameState'
 
 const drawerWidth = 240;
 
@@ -102,17 +104,18 @@ const settings = ['Logout'];
 export default function MenuHeader({setUser, user}) {
  
     const theme = useTheme();
-
     const [open, setOpen] = useState(false);
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const {listArr, setListArr} = useContext(ListContext)
     const {listId, setListId} = useContext(ListIdContext)
+    const {listName, setListName} = useContext(ListNameContext)
    
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -127,7 +130,7 @@ export default function MenuHeader({setUser, user}) {
   
     const handleDrawerOpen = () => {
       setOpen(true);
-
+    
     };
   
     const handleDrawerClose = () => {
@@ -151,9 +154,11 @@ export default function MenuHeader({setUser, user}) {
     }, [])
 
 
-    function handleListItemClick(e, id){
+    function handleListItemClick(e, id, name){
       setListId(id)
+      setListName(name)
       console.log(listId)
+      console.log(name)
     }
 
     function handleDelete(id) {
@@ -169,7 +174,7 @@ export default function MenuHeader({setUser, user}) {
     return (
       <Box sx={{display: 'flex' }}>
         <CssBaseline />
-        <AppBar position="fixed" open={open}>
+        <AppBar sx={{backgroundColor:'#7C8988'}} position="fixed" open={open}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <IconButton
@@ -190,7 +195,7 @@ export default function MenuHeader({setUser, user}) {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            My Lists
+              <img src={stackLogo} alt="stack logo" style={{ width: '14%' }} />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -235,6 +240,7 @@ export default function MenuHeader({setUser, user}) {
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
             {/* {`Welcome ${user.username}`} */}
+            Ban
           </Typography>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -277,14 +283,13 @@ export default function MenuHeader({setUser, user}) {
           <Divider />
           <List>
             {listArr.map((list, index) => (
-              <ListItem onClick={(e)=>handleListItemClick(e, list.id)} as={Link} to={`/lists/${list.id}`} button key= {list.name}>
+              <ListItem sx={{textDecoration: 'none', color:'black'}} onClick={(e)=>handleListItemClick(e, list.id, list.name)} as={Link} to={`/lists/${list.id}`} button key= {list.name}>
                 <ListItemIcon>
                   {index ? <ListAltIcon /> : <ListAltIcon />}
                 </ListItemIcon>
                 <ListItemText primary={list.name} />
-                <Button onClick={() => handleDelete(list.id)} size="small">X</Button>
+                <Button sx={{color:'red', fontSize:'9px', marginLeft: 15}} onClick={() => handleDelete(list.id)} size="small">X</Button>
               </ListItem>
-
             ))}
 
           </List>
