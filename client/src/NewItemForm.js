@@ -1,23 +1,23 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Popover from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+// import {ListIdContext} from './context/listIdState'
 
 
-
-export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
+export default function NewItemForm({filteredItemsArr, listId, newItemAnchorEl, handleNewItemClose}){
     const open = Boolean(newItemAnchorEl);
     const id = open ? 'simple-popover' : undefined;
+    // const {listId, setListId} = useContext(ListIdContext)
+
     const [newItemData, setNewItemData] = useState({
         name: '',
         image_url: '',
         site_url: '',
-        price: ''
+        price: '',
     })
 
-  
-  
     function handleNewItemSubmit(e){
         e.preventDefault();
         console.log(e.target.value)
@@ -26,15 +26,16 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newItemData)
+        body: JSON.stringify({...newItemData, list_id: listId})
       })
       .then((r) => r.json())
-      .then((newItem) => setNewItemData(newItem));
+      .then((newItem) => setNewItemData([...filteredItemsArr, newItem]));
   }
 
     function handleNewItemChange(e){
         setNewItemData({...newItemData, [e.target.name]:e.target.value})
         console.log(e.target.value)
+        console.log(listId)
     }
 
     return (
@@ -106,7 +107,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
           // defaultValue=""
           helperText="Optional"
         />
-         <Button
+         <Button sx={{color:'#7C8988'}}
         type="submit"
         variant='outlined'
         > Add Item </Button>

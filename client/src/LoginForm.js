@@ -94,7 +94,7 @@ export default function LoginForm({loginAnchorEl, handleLoginClose, setUser}){
         />
          <Button
         type="submit"
-        variant='outlined'
+        sx={{color:'#7C8988'}}
         > Login </Button>
         </Box>
       </Popover>

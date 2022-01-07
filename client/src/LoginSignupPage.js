@@ -3,6 +3,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import stackLogo from './assets/stackLogo.png'     
 
 export default function LoginSignupPage({handleLoginClick, handleSignupClick, setLoginAnchorEl, setSignupAnchorEl, loginAnchorEl, setUser, signupAnchorEl}) {
     
@@ -16,7 +17,7 @@ export default function LoginSignupPage({handleLoginClick, handleSignupClick, se
 
     return(
         <div>
-        <h1>My Lists</h1>
+         <img src={stackLogo} alt="stack logo" style={{ width: '38%', padding: '40px' }} />
         <Stack spacing={1} direction="row" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <Button onClick={handleLoginClick} style={{backgroundColor: '#000000'}} variant='contained'>Login</Button>
         <Button onClick={handleSignupClick} style={{backgroundColor: '#000000'}} variant='contained'>Signup</Button>

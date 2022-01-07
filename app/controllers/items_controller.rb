@@ -5,7 +5,8 @@ class ItemsController < ApplicationController
     end
     
     def create
-        item= Item.create!(list_params)
+        list = List.find(params[:list_id])
+        item=list.items.create!(list_params)
         render json: item, status: :created
     end
 

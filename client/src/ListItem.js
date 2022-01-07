@@ -26,7 +26,7 @@ export default function ListItem({name, price, siteUrl, picture, id, listItemsAr
 
     function handleDeleteItem(id){
 
-      fetch(`items/${id}`, {
+      fetch(`/items/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -45,15 +45,11 @@ export default function ListItem({name, price, siteUrl, picture, id, listItemsAr
       // }
       // )
     }
-    
-    function handleItemButtonClick(){
-        console.log('you clicked the item card button')
-    }
 
         return (
 
           <Grid item xs={12} sm={6} md={1.5}>
-            <Card as={Link} to={`/items/5`} onClick={()=>handleItemCardClick(siteUrl)} sx={{ maxWidth: 345, minHeight: 350, maxHeight: 350}}>
+            <Card  onClick={()=>handleItemCardClick(siteUrl)} sx={{maxWidth: 345, minHeight: 350, maxHeight: 350}}>
               <CardMedia
                 component="img"
                 src= {picture}
@@ -62,17 +58,17 @@ export default function ListItem({name, price, siteUrl, picture, id, listItemsAr
                 // image="/static/images/cards/contemplative-reptile.jpg"
               />
               <CardContent>
-                <Typography gutterBottom variant="h8" component="div">
+                <Typography as={Link} to={`/items/${name}`} sx={{textDecoration: 'none', color:'black'}}gutterBottom variant="h8" component="div">
                   {name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {null ? '' : price}
                 </Typography>
+                <Button onClick={handleUpdateItemFormClick} size="small">Update</Button>
                 <Button onClick={() => handleDeleteItem(id)} size="small">Delete</Button>
                  <UpdateItemForm name={name} price={price} siteUrl={siteUrl} picture={picture} itemId={id} updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr={listItemsArr} setListItemArr={setListItemArr}/>
               </CardContent>
               <CardActions>
-                <Button onClick={handleItemButtonClick} size="small">...</Button>
               </CardActions>
             </Card>
             </Grid>

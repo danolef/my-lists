@@ -45,7 +45,7 @@ export default function NewListFrom() {
 
     return(
         <div>
-        <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+        <Button sx={{color:'#7C8988'}} aria-describedby={id} onClick={handleClick}>
             New List
         </Button>
         <Popover
@@ -76,9 +76,9 @@ export default function NewListFrom() {
             label="Required"
             // defaultValue="Hello World"
             />
-            <Button 
+            <Button sx={{color:'#7C8988'}}
             type="submit"
-            variant="outlined">
+            >
                 Add List
             </Button> 
         </Box>

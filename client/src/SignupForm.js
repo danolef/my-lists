@@ -117,7 +117,7 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
         />
         <Button
         type="submit"
-        variant='outlined'
+        sx={{color:'#7C8988'}}
         > Sign Up </Button>
         </Box>
       </Popover>

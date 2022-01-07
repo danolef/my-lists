@@ -15,8 +15,6 @@ export default function UpdateItemForm({name, price, siteUrl, picture, itemId, u
         site_url: siteUrl,
         price: price
     })
-    console.log(updateItemData)
-    console.log("itemId:",itemId)
     
     
     function handleUpdateItemSubmit(e){
