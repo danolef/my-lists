@@ -20,7 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function RotatingList() {
   return (
-    <Card sx={{ maxWidth= "240"}}>
+    <Card sx={{ maxWidth: 240}}>
       <Grid item xs={12} sm={6} md={1.5}>
      
       <CardMedia
