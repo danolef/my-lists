@@ -72,25 +72,25 @@ export default function LoginForm({loginAnchorEl, handleLoginClose, setUser}){
     >
         <TextField
           onChange={handleLoginChange}
-          error
+          noerror
           type="text" 
           name="username"
           value={loginData.username}
           id="outlined-error-helper-text"
           label="Username"
           // defaultValue=""
-          helperText="Invalid Username. Must be at least 4 characters long, and only use letters and numbers"
+          // helperText="Invalid Username. Must be at least 4 characters long, and only use letters and numbers"
         />
         <TextField
           onChange={handleLoginChange}
-          error
-          type="text" 
+          noerror
+          type="password" 
           name="password"
           value={loginData.password}
           id="outlined-error-helper-text"
           label="Password"
           // defaultValue=""
-          helperText="Invalid Password. Password was incorrect"
+          // helperText="Invalid Password. Password was incorrect"
         />
          <Button
         type="submit"
