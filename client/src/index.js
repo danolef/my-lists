@@ -2,15 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ListProvider } from './context/listState'
+import { ListIdProvider } from './context/listIdState'
 import './index.css';
 import App from './App';
 
 
 ReactDOM.render(
   <ListProvider>
+  <ListIdProvider>
   <BrowserRouter>
     <App />
   </BrowserRouter>
+  </ListIdProvider>
   </ListProvider>,
   document.getElementById('root')
 );

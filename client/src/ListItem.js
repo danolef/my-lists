@@ -6,18 +6,21 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 import UpdateItemForm from './UpdateItemForm'
 
 export default function ListItem({name, price, siteUrl, picture, id, listItemsArr, setListItemArr}){
+
 
   const [updateItemAnchorEl, setUpdateItemAnchorEl] = useState(null);
   const [newListData, setNewListData] = useState([])
   // const [itemId, setItemId] = useState('')
   
 
-    // function handleItemCardClick(){
-    //     console.log('you clicked the card')
-    // }
+    function handleItemCardClick(siteUrl){
+        console.log(siteUrl)
+        console.log('you clicked the card')
+    }
 
     function handleDeleteItem(id){
 
@@ -27,7 +30,6 @@ export default function ListItem({name, price, siteUrl, picture, id, listItemsAr
       .then(() => {
         setListItemArr(listItemsArr.filter(p => p.id !== id))
       })
-
     }
   
     const handleUpdateItemClose = () => {
@@ -44,32 +46,34 @@ export default function ListItem({name, price, siteUrl, picture, id, listItemsAr
     
 
     function handleItemButtonClick(){
-        console.log('youclicked the item card button')
+        console.log('you clicked the item card button')
     }
+
         return (
-            <Card sx={{ maxWidth: 345 }}>
+
+          <Grid item xs={12} sm={6} md={1.5}>
+            <Card onClick={()=>handleItemCardClick(site_url)} sx={{ maxWidth: 345, minHeight: 350, maxHeight: 350}}>
               <CardMedia
                 component="img"
                 src= {picture}
-                alt="test image"
-                height="140"
+                alt="item image"
+                height="200"
                 // image="/static/images/cards/contemplative-reptile.jpg"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h8" component="div">
                   {name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {price}
+                  {null ? '' : price}
                 </Typography>
                 <Button onClick={() => handleDeleteItem(id)} size="small">Delete</Button>
-                <Button onClick={handleUpdateItemFormClick} > Update Item </Button>
-                <UpdateItemForm name= {name} price= {price} siteUrl= {siteUrl} picture= {picture} itemId={id} updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr}/>
+                 <UpdateItemForm name= {name} price= {price} siteUrl= {siteUrl} picture= {picture} itemId={id} updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr}/>
               </CardContent>
               <CardActions>
                 <Button onClick={handleItemButtonClick} size="small">...</Button>
-               
               </CardActions>
             </Card>
+            </Grid>
           );
         }
