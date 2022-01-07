@@ -52,7 +52,7 @@ export default function ListItem({name, price, siteUrl, picture, id, listItemsAr
         return (
 
           <Grid item xs={12} sm={6} md={1.5}>
-            <Card onClick={()=>handleItemCardClick(site_url)} sx={{ maxWidth: 345, minHeight: 350, maxHeight: 350}}>
+            <Card onClick={()=>handleItemCardClick(siteUrl)} sx={{ maxWidth: 345, minHeight: 350, maxHeight: 350}}>
               <CardMedia
                 component="img"
                 src= {picture}

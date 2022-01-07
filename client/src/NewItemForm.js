@@ -64,37 +64,37 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
     >
         <TextField
           onChange={handleNewItemChange}
-          error
+          noerror
           type="text" 
           name="name"
           value={newItemData.name}
           id="outlined-error-helper-text"
           label="name"
           // defaultValue=""
-          helperText="You must enter an item name"
+          // helperText="You must enter an item name"
         />
         <TextField
           onChange={handleNewItemChange}
-          error
+          noerror
           type="text" 
           name="image_url"
           value={newItemData.image_url}
           id="outlined-error-helper-text"
           label="Image URL"
           // defaultValue=""
-          helperText="You must enter the items URL"
+          // helperText="You must enter the items URL"
         />
 
         <TextField
           onChange={handleNewItemChange}
-          error
+          noerror
           type="text" 
           name="site_url"
           value={newItemData.site_url}
           id="outlined-error-helper-text"
           label="Site URL"
           // defaultValue=""
-          helperText="You must enter the items URL"
+          // helperText="You must enter the items URL"
         />
         <TextField
           onChange={handleNewItemChange}

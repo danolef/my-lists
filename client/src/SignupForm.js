@@ -73,47 +73,47 @@ export default function SignupForm({signupAnchorEl, handleSignupClose, setUser})
     >
         <TextField
           onChange={handleSignupChange}
-          error
+          noerror
           type="text" 
           name="username"
           value={signupData.username}
           id="outlined-error-helper-text"
           label="Username"
           // defaultValue=""
-          helperText="Invalid Username. Must be at least 4 characters long, and only use letters and numbers"
+          // helperText="Invalid Username. Must be at least 4 characters long, and only use letters and numbers"
         />
         <TextField
           onChange={handleSignupChange}
-          error
+          noerror
           type="text" 
           name="email"
           value={signupData.email}
           id="outlined-error-helper-text"
           label="Email"
           // defaultValue=""
-          helperText="Invalid Email. Email does not exist"
+          // helperText="Invalid Email. Email does not exist"
         />
          <TextField
           onChange={handleSignupChange}
-          error
-          type="text" 
+          noerror
+          type="password" 
           name="password"
           value={signupData.password}
           id="outlined-error-helper-text"
           label="Password"
           // defaultValue=""
-          helperText="Invalid Password. Password was incorrect"
+          // helperText="Invalid Password. Password was incorrect"
         />
         <TextField
           onChange={handleSignupChange}
-          error
-          type="text" 
+          noerror
+          type="password" 
           name="password_confirmation"
           value={signupData.passwordConfirm}
           id="outlined-error-helper-text"
           label="Confirm Password"
           // defaultValue=""
-          helperText="Passwords do not match"
+          // helperText="Passwords do not match"
         />
         <Button
         type="submit"
