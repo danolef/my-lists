@@ -127,6 +127,7 @@ export default function MenuHeader({setUser, user}) {
   
     const handleDrawerOpen = () => {
       setOpen(true);
+
     };
   
     const handleDrawerClose = () => {
@@ -146,8 +147,9 @@ export default function MenuHeader({setUser, user}) {
     useEffect(()=> {
       fetch("/lists")
       .then((res) => res.json())
-      .then((lists) => {setListArr(lists)})
-    }, [] /* [listArr]*/)
+      .then((lists) => setListArr(lists))
+    }, [])
+
 
     function handleListItemClick(e, id){
       setListId(id)

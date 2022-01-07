@@ -6,35 +6,45 @@ import Button from '@mui/material/Button';
 
 
 
-export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
-    const open = Boolean(newItemAnchorEl);
+export default function UpdateItemForm({name, price, siteUrl, picture, itemId, updateItemAnchorEl, handleUpdateItemClose, listItemsArr, setListItemArr}){
+    const open = Boolean(updateItemAnchorEl);
     const id = open ? 'simple-popover' : undefined;
-    const [newItemData, setNewItemData] = useState({
-        name: '',
-        image_url: '',
-        site_url: '',
-        price: ''
+    const [updateItemData, setUpdateItemData] = useState({
+        name: name,
+        image_url: picture,
+        site_url: siteUrl,
+        price: price
     })
-
-  
-  
-    function handleNewItemSubmit(e){
+    console.log(updateItemData)
+    console.log("itemId:",itemId)
+    
+    
+    function handleUpdateItemSubmit(e){
         e.preventDefault();
-        console.log(e.target.value)
-      fetch("/items", {
-        method: "POST",
+        console.log(itemId)
+        
+        
+      fetch(`/items/${itemId}`, {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newItemData)
+        body: JSON.stringify(updateItemData)
       })
-      .then((r) => r.json())
-      .then((newItem) => setNewItemData(newItem));
+      .then(res => res.json())
+      .then(updateItem => {
+        setListItemArr(listItemsArr.map(item => {
+              if(item.id === updateItem.id){
+                  return updateItem
+              } else {
+                  return item
+              }
+          }))
+      })
   }
 
-    function handleNewItemChange(e){
-        setNewItemData({...newItemData, [e.target.name]:e.target.value})
-        console.log(e.target.value)
+    function handleUpdateItemChange(e){
+        setUpdateItemData({...updateItemData, [e.target.name]:e.target.value})
     }
 
     return (
@@ -42,8 +52,8 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
      <Popover
         id={id}
         open={open}
-        anchorEl={newItemAnchorEl}
-        onClose={handleNewItemClose}
+        anchorEl={updateItemAnchorEl}
+        onClose={handleUpdateItemClose}
         anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'left',
@@ -54,7 +64,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
         }}
       >
  <Box
-      onSubmit={handleNewItemSubmit}
+      onSubmit={handleUpdateItemSubmit}
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -63,22 +73,22 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
       autoComplete="off"
     >
         <TextField
-          onChange={handleNewItemChange}
+          onChange={handleUpdateItemChange}
           error
           type="text" 
           name="name"
-          value={newItemData.name}
+          value={updateItemData.name}
           id="outlined-error-helper-text"
           label="name"
           // defaultValue=""
           helperText="You must enter an item name"
         />
         <TextField
-          onChange={handleNewItemChange}
+          onChange={handleUpdateItemChange}
           error
           type="text" 
           name="image_url"
-          value={newItemData.image_url}
+          value={updateItemData.image_url}
           id="outlined-error-helper-text"
           label="Image URL"
           // defaultValue=""
@@ -86,21 +96,21 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
         />
 
         <TextField
-          onChange={handleNewItemChange}
+          onChange={handleUpdateItemChange}
           error
           type="text" 
           name="site_url"
-          value={newItemData.site_url}
+          value={updateItemData.site_url}
           id="outlined-error-helper-text"
           label="Site URL"
           // defaultValue=""
           helperText="You must enter the items URL"
         />
         <TextField
-          onChange={handleNewItemChange}
+          onChange={handleUpdateItemChange}
           type="text" 
           name="price"
-          value={newItemData.price}
+          value={updateItemData.price}
           id="outlined-error-helper-text"
           label="Price"
           // defaultValue=""
@@ -109,8 +119,7 @@ export default function NewItemForm({newItemAnchorEl, handleNewItemClose}){
          <Button
         type="submit"
         variant='outlined'
-        > Add Item </Button>
-
+        > Update Item </Button>
         </Box>
       </Popover>
         </div>

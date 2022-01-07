@@ -1,12 +1,9 @@
 import './App.css';
 import { Routes, Route } from "react-router-dom";
 import LoginSignupPage from './LoginSignupPage';
-import RotatingList from './RotatingList';
 import HomePage from './HomePage'
-import MenuHeader from './MenuHeader'
 import ListPage from './ListPage'
 import ItemPage from './ItemPage'
-import NewListForm from './NewListForm'
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -43,7 +40,7 @@ function handleSignupClick(event){
       <Routes>
       <Route path='/lists/:id' element={<ListPage/>}/>
       <Route path='/items/:id' element={<ItemPage/>}/>
-      <Route path='/home' element={<HomePage/>}/>
+      <Route path='/home' element={<HomePage setUser= {setUser}/>}/>
       <Route path='/' element={<LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  setLoginAnchorEl={setLoginAnchorEl} setSignupAnchorEl={setSignupAnchorEl} loginAnchorEl={loginAnchorEl} signupAnchorEl={signupAnchorEl} setUser={setUser} /> }/>
       </Routes>
       </div>

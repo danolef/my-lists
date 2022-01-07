@@ -31,13 +31,9 @@ export default function ListPage(){
         console.log('hey im the new item button')
       }
 
-
-    // const listItemsCard = listItemsArr.map(itemData => <ListItem itemData= {itemData} listItemsArr={listItemsArr} setListItemArr={setListItemArr} newItemAnchorEl={newItemAnchorEl} 
-    //   handleNewItemClose={handleNewItemClose} />)
     const filteredItems = filteredItemsArr.filter(item => item.lists[0].id === listId)
     const listItemsCard = filteredItems.map(itemData =>   <ListItem key ={itemData.id} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr} name= {itemData.name} siteUrl= {itemData.site_url} picture= {itemData.image_url} price= {itemData.price} id={itemData.id} newItemAnchorEl={newItemAnchorEl} handleNewItemClose={handleNewItemClose} /> )
-    
-    
+
     return(
         <div>
             <MenuHeader/>
