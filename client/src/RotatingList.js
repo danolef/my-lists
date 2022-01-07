@@ -10,69 +10,27 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import Pagination from '@mui/material/Pagination';
 import Grid from '@mui/material/Grid';
+import { Carousel } from "react-bootstrap";
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
 
-export default function RotatingList() {
+
+export default function RotatingList({ name, imageUrl }) {
+
   return (
-    <Card sx={{ maxWidth= "240"}}>
-      <Grid item xs={12} sm={6} md={1.5}>
-     
-      <CardMedia
-        component="img"
-        height="140"
-        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
-        alt="green iguana"
-      />
-      
-      <Item>
-      <CardMedia
-        component="img"
-        height="140"
-        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
-        alt="green iguana"
-      />
-      </Item>
-      <Item>
-      <CardMedia
-        component="img"
-        height="140"
-        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
-        alt="green iguana"
-      />
-      </Item>
-      <Item>
-      <CardMedia
-        component="img"
-        height="140"
-        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
-        alt="green iguana"
-      />
-      </Item>
-      <Item>
-      <CardMedia
-        component="img"
-        height="140"
-        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
-        alt="green iguana"
-      />
-      </Item>
-      <Item>
-      <CardMedia
-        component="img"
-        height="140"
-        image="https://cdn.pixabay.com/photo/2021/12/19/10/42/old-6880626__340.jpg"
-        alt="green iguana"
-      />
-      </Item>
-     
-      </Grid>
-      </Card>
-    
-  );
+    <>
+    <Grid item xs={12} sm={8} md={4}>
+<Card sx={{ maxWidth: 285, minHeight: 385, maxHeight: 300}}>
+ 
+  <CardMedia
+    component="img"
+    height="350"
+    image={imageUrl}
+    alt={name}
+  />
+
+  </Card>
+  </Grid>
+    </>
+
+  )
 }

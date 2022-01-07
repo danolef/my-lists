@@ -29,6 +29,7 @@ import Button from '@mui/material/Button';
 import { useContext, useState, useEffect } from 'react'
 import {ListContext} from './context/listState'
 import {ListIdContext} from './context/listIdState'
+import stackLogo from './assets/stackLogo.png'
 
 const drawerWidth = 240;
 
@@ -172,6 +173,7 @@ export default function MenuHeader({setUser, user}) {
         <AppBar position="fixed" open={open}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
+            
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -184,13 +186,14 @@ export default function MenuHeader({setUser, user}) {
             >
               <MenuIcon />
             </IconButton>
+            <img src={stackLogo} alt="stack logo" style={{ width: '14%' }} />
             <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            My Lists
+         
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton

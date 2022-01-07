@@ -42,9 +42,8 @@ function handleSignupClick(event){
       <Route path='/lists/:id' element={<ListPage/>}/>
       <Route path='/items/:id' element={<ItemPage/>}/>
       <Route path='/home' element={<HomePage setUser= {setUser}/>}/>
-      <Route path='/' element={<LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  setLoginAnchorEl={setLoginAnchorEl} setSignupAnchorEl={setSignupAnchorEl} loginAnchorEl={loginAnchorEl} signupAnchorEl={signupAnchorEl} setUser={setUser} /> }/>
+      <Route path='/' element={user ? <HomePage setUser= {setUser}/> : <LoginSignupPage handleSignupClick={handleSignupClick} handleLoginClick={handleLoginClick}  setLoginAnchorEl={setLoginAnchorEl} setSignupAnchorEl={setSignupAnchorEl} loginAnchorEl={loginAnchorEl} signupAnchorEl={signupAnchorEl} setUser={setUser} /> }/>
       </Routes>
-      <RotatingList />
       </div>
   );
 }
