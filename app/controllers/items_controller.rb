@@ -14,7 +14,13 @@ class ItemsController < ApplicationController
         item.destroy
         head :no_content
     end
-    
+
+    def update
+        item= Item.find_by(id: params[:id])
+        item.update({name:params[:name], site_url:params[:site_url], image_url:params[:image_url], price:params[:price]})
+        render json: item
+    end
+
     private
     
     def list_params

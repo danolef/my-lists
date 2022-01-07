@@ -8,15 +8,16 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import UpdateItemForm from './UpdateItemForm'
 
-export default function ListItem({name, price, site_url, picture, id, listItemsArr, setListItemArr}){
+export default function ListItem({name, price, siteUrl, picture, id, listItemsArr, setListItemArr}){
 
   const [updateItemAnchorEl, setUpdateItemAnchorEl] = useState(null);
   const [newListData, setNewListData] = useState([])
+  // const [itemId, setItemId] = useState('')
+  
 
-
-    function handleItemCardClick(){
-        console.log('you clicked the card')
-    }
+    // function handleItemCardClick(){
+    //     console.log('you clicked the card')
+    // }
 
     function handleDeleteItem(id){
 
@@ -35,13 +36,18 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
 
     function handleUpdateItemFormClick(event){
       setUpdateItemAnchorEl(event.currentTarget)
+      // setItemId(prevState => {
+      //   return {id}
+      // }
+      // )
     }
+    
 
     function handleItemButtonClick(){
         console.log('youclicked the item card button')
     }
         return (
-            <Card onClick={handleItemCardClick} sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 345 }}>
               <CardMedia
                 component="img"
                 src= {picture}
@@ -57,8 +63,8 @@ export default function ListItem({name, price, site_url, picture, id, listItemsA
                   {price}
                 </Typography>
                 <Button onClick={() => handleDeleteItem(id)} size="small">Delete</Button>
-                <Button onClick={handleUpdateItemFormClick}> Update Item </Button>
-                <UpdateItemForm updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr}/>
+                <Button onClick={handleUpdateItemFormClick} > Update Item </Button>
+                <UpdateItemForm name= {name} price= {price} siteUrl= {siteUrl} picture= {picture} itemId={id} updateItemAnchorEl={updateItemAnchorEl} handleUpdateItemClose={handleUpdateItemClose} listItemsArr= {listItemsArr} setListItemArr= {setListItemArr}/>
               </CardContent>
               <CardActions>
                 <Button onClick={handleItemButtonClick} size="small">...</Button>

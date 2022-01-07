@@ -6,26 +6,30 @@ import Button from '@mui/material/Button';
 
 
 
-export default function UpdateItemForm({updateItemAnchorEl, handleUpdateItemClose, listItemsArr, setListItemArr}){
+export default function UpdateItemForm({name, price, siteUrl, picture, itemId, updateItemAnchorEl, handleUpdateItemClose, listItemsArr, setListItemArr}){
     const open = Boolean(updateItemAnchorEl);
     const id = open ? 'simple-popover' : undefined;
     const [updateItemData, setUpdateItemData] = useState({
-        name: '',
-        image_url: '',
-        site_url: '',
-        price: ''
+        name: name,
+        image_url: picture,
+        site_url: siteUrl,
+        price: price
     })
-
-  
-  
-    function handleUpdateItemSubmit(e, updateItemData, item){
+    console.log(updateItemData)
+    console.log("itemId:",itemId)
+    
+    
+    function handleUpdateItemSubmit(e){
         e.preventDefault();
-      fetch(`/items/${item.id}`, {
+        console.log(itemId)
+        
+        
+      fetch(`/items/${itemId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({...item, updateItemData})
+        body: JSON.stringify(updateItemData)
       })
       .then(res => res.json())
       .then(updateItem => {
@@ -60,7 +64,7 @@ export default function UpdateItemForm({updateItemAnchorEl, handleUpdateItemClos
         }}
       >
  <Box
-      onSubmit={(e)=> handleUpdateItemSubmit(e, item)}
+      onSubmit={handleUpdateItemSubmit}
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
